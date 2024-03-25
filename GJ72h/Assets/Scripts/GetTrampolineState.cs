@@ -4,10 +4,16 @@ using UnityEngine;
 
 public class GetTrampolineState : StateMachineBehaviour
 {
+    private PlayerManager playerManager;
+
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        Debug.Log("Get");
-        animator.transform.root.GetComponent<PlayerManager>().seedCount++;
+        if (playerManager == null)
+        {
+            playerManager = animator.transform.root.transform.GetComponent<PlayerManager>();
+        }
+
+        playerManager.seedCount++;
         animator.Play("Idle");
     }
 

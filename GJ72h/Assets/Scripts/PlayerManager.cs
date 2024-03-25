@@ -12,6 +12,7 @@ public class PlayerManager : MonoBehaviour
     public bool CheckIfIsGrounded()
     {
         Collider[] hitColliders = Physics.OverlapSphere(groundChecker.position, radius);
+
         foreach (var hitCollider in hitColliders)
         {
             if (hitCollider.gameObject.layer == LayerMask.NameToLayer("Ground"))

@@ -11,7 +11,7 @@ public class MoveState : StateMachineBehaviour
     {
         if (processControls == null)
         {
-            processControls = animator.transform.root.GetComponentInChildren<ProcessControls>();
+            processControls = animator.transform.root.GetComponent<ProcessControls>();
         }
     }
     

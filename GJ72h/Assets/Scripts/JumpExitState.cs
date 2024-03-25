@@ -5,6 +5,7 @@ using UnityEngine;
 public class JumpExitState : StateMachineBehaviour
 {
     ProcessControls processControls;
+    private PlayerManager playerManager;
 
     public override void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
@@ -12,12 +13,16 @@ public class JumpExitState : StateMachineBehaviour
         {
             processControls = animator.transform.root.GetComponentInChildren<ProcessControls>();
         }
-        Debug.Log("JumpExit");
+
+        if (playerManager == null)
+        {
+            playerManager = animator.transform.root.GetComponent<PlayerManager>();
+        }
     }
     
     public override void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        if (animator.transform.root.GetComponent<PlayerManager>().CheckIfIsGrounded())
+        if (playerManager.CheckIfIsGrounded())
         {
             animator.Play("Idle");
         }

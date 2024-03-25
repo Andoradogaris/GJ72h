@@ -5,6 +5,7 @@ using UnityEngine;
 public class IdleState : StateMachineBehaviour
 {
     ProcessControls processControls;
+    private PlayerManager playerManager;
     [SerializeField] private float range;
 
     public override void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
@@ -13,11 +14,16 @@ public class IdleState : StateMachineBehaviour
         {
             processControls = animator.transform.root.GetComponentInChildren<ProcessControls>();
         }
+
+        if (playerManager == null)
+        {
+            playerManager = animator.transform.root.GetComponent<PlayerManager>();
+        }
     }
     
     public override void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        if (!animator.transform.root.GetComponent<PlayerManager>().CheckIfIsGrounded())
+        if (!playerManager.CheckIfIsGrounded())
         {
             animator.Play("JumpExit");
         }
@@ -27,7 +33,7 @@ public class IdleState : StateMachineBehaviour
             animator.Play("Walk");
         }
 
-        if (processControls.GetIsJumpKeyPressed() && animator.transform.root.GetComponent<PlayerManager>().CheckIfIsGrounded())
+        if (processControls.GetIsJumpKeyPressed() && playerManager.CheckIfIsGrounded())
         {
             animator.Play("JumpEnter");
         }
@@ -47,7 +53,7 @@ public class IdleState : StateMachineBehaviour
             }
             else
             {
-                if (animator.transform.root.GetComponent<PlayerManager>().seedCount > 0)
+                if (playerManager.seedCount > 0)
                 {
                     animator.Play("DropTrampoline");
                 }

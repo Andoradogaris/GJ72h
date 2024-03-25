@@ -5,16 +5,22 @@ using UnityEngine;
 public class JumpEnterState : StateMachineBehaviour
 {
     ProcessControls processControls;
+    private Rigidbody rb;
     [SerializeField]Vector3 impulseForce;
+
     public override void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         if (processControls == null)
         {
             processControls = animator.transform.root.GetComponentInChildren<ProcessControls>();
         }
-        Debug.Log("JumpEnter");
 
-        animator.transform.root.GetComponentInChildren<Rigidbody>().AddForce(impulseForce + animator.transform.GetComponent<Rigidbody>().velocity, ForceMode.Impulse);
+        if (rb == null)
+        {
+            rb = animator.transform.GetComponent<Rigidbody>();
+        }
+
+        rb.AddForce(impulseForce + rb.velocity, ForceMode.Impulse);
 
     }
     

@@ -6,6 +6,7 @@ public class WalkState : StateMachineBehaviour
 {
     public float velocityThreshold = -1.0f;
     ProcessControls processControls;
+    private PlayerManager playerManager;
     [SerializeField] private float speed;
 
     public override void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
@@ -14,8 +15,11 @@ public class WalkState : StateMachineBehaviour
         {
             processControls = animator.transform.root.GetComponentInChildren<ProcessControls>();
         }
-        Debug.Log("Move");
 
+        if (playerManager == null)
+        {
+            playerManager = animator.transform.root.GetComponent<PlayerManager>();
+        }
     }
     
     public override void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
@@ -25,12 +29,12 @@ public class WalkState : StateMachineBehaviour
             animator.Play("Idle");
         }
 
-        if (processControls.GetIsJumpKeyPressed() && animator.transform.root.GetComponent<PlayerManager>().CheckIfIsGrounded())
+        if (processControls.GetIsJumpKeyPressed() && playerManager.CheckIfIsGrounded())
         {
             animator.Play("JumpEnter");
         }
       
-        if (animator.gameObject.GetComponent<Rigidbody>().velocity.y < velocityThreshold && !animator.transform.root.GetComponent<PlayerManager>().CheckIfIsGrounded())
+        if (animator.gameObject.GetComponent<Rigidbody>().velocity.y < velocityThreshold && !playerManager.CheckIfIsGrounded())
         {
             animator.Play("JumpExit");
         }

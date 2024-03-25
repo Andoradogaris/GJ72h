@@ -5,11 +5,17 @@ using UnityEngine;
 public class TrampJumpState : StateMachineBehaviour
 {
     [SerializeField] private Vector3 impulseForce;
+    private Rigidbody rb;
 
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        animator.gameObject.GetComponent<Rigidbody>().velocity = Vector3.zero;
-        animator.gameObject.GetComponent<Rigidbody>().AddForce(impulseForce, ForceMode.Impulse);
+        if (rb == null)
+        {
+            rb = animator.gameObject.GetComponent<Rigidbody>();
+        }
+
+        rb.velocity = Vector3.zero;
+        rb.AddForce(impulseForce, ForceMode.Impulse);
         animator.Play("JumpExit");
     }
 
