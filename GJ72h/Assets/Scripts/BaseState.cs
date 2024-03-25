@@ -5,7 +5,7 @@ using UnityEngine;
 public class BaseState : StateMachineBehaviour
 {
     [SerializeField] private float range;
-    [SerializeField] private GameObject test;
+
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         Debug.Log("Base");

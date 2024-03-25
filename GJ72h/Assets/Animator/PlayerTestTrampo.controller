@@ -25,7 +25,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   range: 500
-  test: {fileID: 0}
 --- !u!1102 &-564459506187667269
 AnimatorState:
   serializedVersion: 6

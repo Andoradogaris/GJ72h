@@ -14,12 +14,12 @@ public class JumpEnterState : StateMachineBehaviour
         }
         Debug.Log("JumpEnter");
 
-        animator.transform.root.GetComponentInChildren<Rigidbody>().AddForce(impulseForce, ForceMode.Impulse);
+        animator.transform.root.GetComponentInChildren<Rigidbody>().AddForce(impulseForce + animator.transform.GetComponent<Rigidbody>().velocity, ForceMode.Impulse);
 
     }
     
     public override void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
-    { 
+    {
         if (stateInfo.normalizedTime > 0.99f)
         {
             animator.Play("JumpIdle");

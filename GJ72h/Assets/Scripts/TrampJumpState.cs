@@ -8,7 +8,9 @@ public class TrampJumpState : StateMachineBehaviour
 
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
+        animator.gameObject.GetComponent<Rigidbody>().velocity = Vector3.zero;
         animator.gameObject.GetComponent<Rigidbody>().AddForce(impulseForce, ForceMode.Impulse);
+        animator.Play("JumpExit");
     }
 
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)

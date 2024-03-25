@@ -5,25 +5,53 @@ using UnityEngine;
 public class IdleState : StateMachineBehaviour
 {
     ProcessControls processControls;
+    [SerializeField] private float range;
+
     public override void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         if (processControls == null)
         {
             processControls = animator.transform.root.GetComponentInChildren<ProcessControls>();
         }
-        Debug.Log("Idle");
     }
     
     public override void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        if (processControls.GetHorizontalInput() != 0 || processControls.GetVerticalInput() != 0)
+        if (!animator.transform.root.GetComponent<PlayerManager>().CheckIfIsGrounded())
         {
-            animator.Play("Move");
+            animator.Play("JumpExit");
         }
 
-        if (processControls.GetIsJumpKeyPressed() == true)
+        if (processControls.GetHorizontalInput() != 0 || processControls.GetVerticalInput() != 0)
+        {
+            animator.Play("Walk");
+        }
+
+        if (processControls.GetIsJumpKeyPressed() && animator.transform.root.GetComponent<PlayerManager>().CheckIfIsGrounded())
         {
             animator.Play("JumpEnter");
+        }
+
+
+        RaycastHit hit;
+
+        if (Input.GetKeyDown(KeyCode.P))
+        {
+            if (Physics.Raycast(animator.rootPosition, animator.transform.root.forward, out hit, range))
+            {
+                if (hit.transform.CompareTag("Trampoline"))
+                {
+                    animator.Play("GetTrampoline");
+                    Destroy(hit.transform.gameObject);
+                }
+            }
+            else
+            {
+                if (animator.transform.root.GetComponent<PlayerManager>().seedCount > 0)
+                {
+                    animator.Play("DropTrampoline");
+                }
+            }
         }
     }
     
