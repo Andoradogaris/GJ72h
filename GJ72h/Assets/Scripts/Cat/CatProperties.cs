@@ -1,0 +1,41 @@
+using UnityEngine;
+using UnityEngine.AI;
+
+public class CatProperties : MonoBehaviour
+{
+    public GameObject[] Waypoints;
+    public NavMeshAgent agent;
+    public GameObject Player;
+    
+    public GameObject GetRandomWaypoint()
+    {
+        return Waypoints[Random.Range(0, Waypoints.Length)];
+    }
+    
+    [field:SerializeField] public GameObject CurrentWaypoint { get; private set; }
+    
+    public void SetCurrentWaypoint(GameObject waypoint)
+    {
+        CurrentWaypoint = waypoint;
+    }
+    
+    public void SetRandomWaypoint()
+    {
+        int maxTries = 10;
+        int currentTries = 0;
+        var randomWaypoint = GetRandomWaypoint();
+        while (randomWaypoint == CurrentWaypoint)
+        {
+            randomWaypoint = GetRandomWaypoint();
+            currentTries++;
+            if (currentTries >= maxTries)
+            {
+                break;
+            }
+        }
+        
+        SetCurrentWaypoint(randomWaypoint);
+ 
+    }
+    
+}
