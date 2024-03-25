@@ -16,7 +16,6 @@ public class ProcessControls : MonoBehaviour
     
     [Header("Server authoritative inputs")]
     [SerializeField] bool isRunningKeyPressed;
-    [SerializeField] bool isJumpKeyPressed;
     [SerializeField] bool isCrouchKeyPressed ;
 
 
@@ -27,7 +26,7 @@ public class ProcessControls : MonoBehaviour
 
     [SerializeField] bool isFistAtkPressed;
 
-    [SerializeField] bool isLegAtkPressed;
+    [SerializeField] bool isJumpPressed;
 
     [SerializeField] bool isBlockKeyPressed;
 
@@ -61,6 +60,8 @@ public class ProcessControls : MonoBehaviour
     
     UnityEngine.InputSystem.Utilities.ReadOnlyArray<Gamepad> allGamepads;
 
+    public bool isGrounded;
+
     
     private void Update()
     {
@@ -72,7 +73,6 @@ public class ProcessControls : MonoBehaviour
 
 
         isRunningKeyPressed = (horizontalInput > deadZoneOne || horizontalInput < -deadZoneOne);
-        isJumpKeyPressed = (verticalInput > deadZoneOne);
         isCrouchKeyPressed = (verticalInput < -deadZoneOne);
 
         oldMoveDirection = currentMoveDirection;
@@ -106,7 +106,7 @@ public class ProcessControls : MonoBehaviour
         verticalInput = gamepad.leftStick.y.ReadValue();
 
         isFistAtkPressed = WasButtonPressedThisFrame(PlayerControlsKey.Instance.fistAttackKeyGamepad, gamepad);
-        isLegAtkPressed = WasButtonPressedThisFrame(PlayerControlsKey.Instance.legAttackKeyGamepad, gamepad);
+        isJumpPressed = WasButtonPressedThisFrame(PlayerControlsKey.Instance.legAttackKeyGamepad, gamepad);
         isUltimateKeyPressed = WasButtonPressedThisFrame(PlayerControlsKey.Instance.UltimateKeyGamepad, gamepad);
         isBlockKeyPressed = IsButtonPressed(PlayerControlsKey.Instance.BlockKeyGamepad, gamepad);
         isStartKeyPressed = WasButtonPressedThisFrame(PlayerControlsKey.Instance.StartKeyGamepad, gamepad);
@@ -169,7 +169,7 @@ public class ProcessControls : MonoBehaviour
         horizontalInput = tempInput;
         
         isFistAtkPressed = Input.GetKeyDown(PlayerControlsKey.Instance.fistAttackKeyPlayerOne);
-        isLegAtkPressed = Input.GetKeyDown(PlayerControlsKey.Instance.legAttackKeyPlayerOne);
+        isJumpPressed = Input.GetKeyDown(PlayerControlsKey.Instance.jumpKeyPlayerOne);
         isBlockKeyPressed = Input.GetKey(PlayerControlsKey.Instance.BlockKeyPlayerOne);
         isUltimateKeyPressed = Input.GetKeyDown(PlayerControlsKey.Instance.UltimateKeyPlayerOne);
         isStartKeyPressed = Input.GetKeyDown(PlayerControlsKey.Instance.StartKeyPlayerOne);
@@ -205,7 +205,7 @@ public class ProcessControls : MonoBehaviour
         horizontalInput = tempInput;
 
         isFistAtkPressed = Input.GetKeyDown(PlayerControlsKey.Instance.fistAttackKeyPlayerTwo);
-        isLegAtkPressed = Input.GetKeyDown(PlayerControlsKey.Instance.legAttackKeyPlayerTwo);
+        isJumpPressed = Input.GetKeyDown(PlayerControlsKey.Instance.jumpKeyPlayerTwo);
         isBlockKeyPressed = Input.GetKey(PlayerControlsKey.Instance.BlockKeyPlayerTwo);
         isUltimateKeyPressed = Input.GetKeyDown(PlayerControlsKey.Instance.UltimateKeyPlayerTwo);
         isStartKeyPressed = Input.GetKeyDown(PlayerControlsKey.Instance.StartKeyPlayerTwo);
@@ -263,12 +263,11 @@ public class ProcessControls : MonoBehaviour
     {
         controlsEnable = state;
         isRunningKeyPressed = false;
-        isJumpKeyPressed = false;
         isCrouchKeyPressed = false;
         horizontalInput = 0;
         verticalInput = 0;
         isFistAtkPressed = false;
-        isLegAtkPressed = false;
+        isJumpPressed = false;
         isBlockKeyPressed = false;
         isUltimateKeyPressed = false;
         isStartKeyPressed = false;
@@ -287,9 +286,9 @@ public class ProcessControls : MonoBehaviour
         return isFistAtkPressed;
     }
 
-    public bool GetIsLegAtkPressed()
+    public bool GetIsJumpKeyPressed()
     {
-        return isLegAtkPressed;
+        return isJumpPressed;
     }
 
     public bool GetIsBlockPressed()
@@ -330,11 +329,6 @@ public class ProcessControls : MonoBehaviour
     public bool GetIsUltimateKeyPressed()
     {
         return isUltimateKeyPressed;
-    }
-
-    public bool GetIsJumpKeyPressed()
-    {
-        return isJumpKeyPressed;
     }
 
     public bool GetIsDashKeyPressed()
