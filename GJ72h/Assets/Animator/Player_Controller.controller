@@ -55,7 +55,7 @@ AnimatorStateMachine:
     m_Position: {x: 340, y: 100, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 7867961393480975987}
-    m_Position: {x: 330, y: 200, z: 0}
+    m_Position: {x: 340, y: 200, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 314154521347008569}
     m_Position: {x: 660, y: 110, z: 0}
@@ -273,7 +273,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d1b4e367610d89944990bbc8d406a31d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  impulseForce: {x: 0, y: 15, z: 0}
+  impulseForce: {x: 0, y: 280, z: 0}
 --- !u!114 &-499526876592038755
 MonoBehaviour:
   m_ObjectHideFlags: 1
