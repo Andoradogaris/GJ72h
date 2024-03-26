@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerChase : StateMachineBehaviour
+public class CatPlayerChase : StateMachineBehaviour
 {
     CatProperties catProperties;
     
@@ -10,15 +10,17 @@ public class PlayerChase : StateMachineBehaviour
     public float stopChaseDistance = 100.0f;
     public float attackDistance = 1.0f;
     
-    public float oldSpeed;
+    private float oldSpeed;
     public override void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         if (catProperties == null)
         {
             catProperties = animator.transform.root.GetComponent<CatProperties>();
         }
-        oldSpeed = catProperties.agent.speed;
-        catProperties.agent.speed = chaseSpeed;
+        oldSpeed = catProperties.CatAgent.speed;
+        catProperties.CatAgent.speed = chaseSpeed;
+        
+        Debug.Log("Chasing");
     }
     
     public override void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
@@ -34,11 +36,11 @@ public class PlayerChase : StateMachineBehaviour
             return;
         }
         
-        catProperties.agent.SetDestination(catProperties.Player.transform.position);
+        catProperties.CatAgent.SetDestination(catProperties.Player.transform.position);
     }
     
     public override void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        catProperties.agent.speed = oldSpeed;
+        catProperties.CatAgent.speed = oldSpeed;
     }
 }

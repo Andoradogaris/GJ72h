@@ -6,6 +6,10 @@ public class CatPatrol : StateMachineBehaviour
 {
     CatProperties catProperties;
     GameObject currentWaypoint;
+    
+    public float patrolSpeed = 2.0f;
+    float oldSpeed;
+    
     public override void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         if (catProperties == null)
@@ -18,21 +22,25 @@ public class CatPatrol : StateMachineBehaviour
             catProperties.SetRandomWaypoint();
             currentWaypoint = catProperties.CurrentWaypoint;
         }
-        catProperties.agent.SetDestination(currentWaypoint.transform.position);
+        catProperties.CatAgent.SetDestination(currentWaypoint.transform.position);
         Debug.Log("Patrolling");
+        
+        oldSpeed = catProperties.CatAgent.speed;
+        catProperties.CatAgent.speed = patrolSpeed;
+        
     }
     
     public override void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        if (catProperties.agent.remainingDistance <= 0.1f)
+        if (catProperties.CatAgent.remainingDistance <= 0.1f)
         {
             animator.Play("Idle");
         }
-        catProperties.agent.SetDestination(currentWaypoint.transform.position);
+        catProperties.CatAgent.SetDestination(currentWaypoint.transform.position);
     }
     
     public override void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        
+        catProperties.CatAgent.speed = oldSpeed;
     }
 }

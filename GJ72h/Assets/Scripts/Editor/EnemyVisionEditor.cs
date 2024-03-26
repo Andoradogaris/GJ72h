@@ -3,7 +3,7 @@ using UnityEngine;
 using System.Reflection;
 using System;
 
-[CustomEditor(typeof(EnemyVision))]
+[CustomEditor(typeof(Vision))]
 public class EnemyVisionEditor : Editor
 {
     static MethodInfo _clearConsoleMethod;
@@ -27,12 +27,12 @@ public class EnemyVisionEditor : Editor
     {
         base.OnInspectorGUI();
 
-        EnemyVision enemyVision = (EnemyVision)target;
+        Vision vision = (Vision)target;
 
         if (GUILayout.Button("Check if target is visible"))
         {
             ClearLogConsole();
-            enemyVision.CheckIfTargetIsVisible();
+            vision.CheckIfTargetIsVisible();
         }
     }
 }

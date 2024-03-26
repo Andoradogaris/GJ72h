@@ -169,7 +169,7 @@ GameObject:
   - component: {fileID: 35271330}
   - component: {fileID: 35271329}
   - component: {fileID: 35271328}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Obstacle (6)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -496,6 +496,37 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1111069855}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &443417098
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 443417099}
+  m_Layer: 0
+  m_Name: ----- OTHER ------
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &443417099
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 443417098}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -3.006306, y: 18.992634, z: -26.233318}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &464928688
 GameObject:
   m_ObjectHideFlags: 0
@@ -713,6 +744,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   target: {fileID: 170512208}
   VisionAngle: 160
+  obstacleLayer:
+    serializedVersion: 2
+    m_Bits: 64
+  visionChecks: 1
 --- !u!114 &509832355
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -733,8 +768,9 @@ MonoBehaviour:
   - {fileID: 1671655281}
   - {fileID: 1281128259}
   - {fileID: 1102038682}
-  agent: {fileID: 509832349}
-  <CurrentWaypoint>k__BackingField: {fileID: 0}
+  CatAgent: {fileID: 509832349}
+  CatVision: {fileID: 509832354}
+  Player: {fileID: 170512202}
 --- !u!95 &509832356
 Animator:
   serializedVersion: 7
@@ -769,7 +805,7 @@ GameObject:
   - component: {fileID: 530976283}
   - component: {fileID: 530976282}
   - component: {fileID: 530976281}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Obstacle (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -864,6 +900,37 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 530976279}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &619182569
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 619182570}
+  m_Layer: 0
+  m_Name: ----- CHARACTERS ------
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &619182570
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 619182569}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -3.006306, y: 18.992634, z: -26.233318}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &698939029
 GameObject:
   m_ObjectHideFlags: 0
@@ -965,7 +1032,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 747652087}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Environnement
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1259,7 +1326,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1182935967}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Obstacles
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1301,7 +1368,7 @@ GameObject:
   - component: {fileID: 1247770741}
   - component: {fileID: 1247770740}
   - component: {fileID: 1247770739}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Obstacle (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1439,7 +1506,7 @@ GameObject:
   - component: {fileID: 1291534787}
   - component: {fileID: 1291534786}
   - component: {fileID: 1291534785}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Obstacle (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1546,7 +1613,7 @@ GameObject:
   - component: {fileID: 1348631628}
   - component: {fileID: 1348631627}
   - component: {fileID: 1348631626}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Ground
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1641,6 +1708,37 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1348631624}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &1353673596
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1353673597}
+  m_Layer: 0
+  m_Name: ----- MAP ------
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1353673597
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1353673596}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -3.006306, y: 18.992634, z: -26.233318}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1490428299
 GameObject:
   m_ObjectHideFlags: 0
@@ -1653,7 +1751,7 @@ GameObject:
   - component: {fileID: 1490428303}
   - component: {fileID: 1490428302}
   - component: {fileID: 1490428301}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Obstacle (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1895,7 +1993,7 @@ GameObject:
   - component: {fileID: 1694374127}
   - component: {fileID: 1694374126}
   - component: {fileID: 1694374125}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Obstacle (5)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2002,7 +2100,7 @@ GameObject:
   - component: {fileID: 1769690644}
   - component: {fileID: 1769690643}
   - component: {fileID: 1769690642}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Obstacle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2097,6 +2195,37 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1769690640}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &1782513420
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1782513421}
+  m_Layer: 0
+  m_Name: ----- NAV MESH ------
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1782513421
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1782513420}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -3.006306, y: 18.992634, z: -26.233318}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1823945582
 GameObject:
   m_ObjectHideFlags: 0
@@ -2109,7 +2238,7 @@ GameObject:
   - component: {fileID: 1823945586}
   - component: {fileID: 1823945585}
   - component: {fileID: 1823945584}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Obstacle (7)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2430,12 +2559,16 @@ Transform:
 SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
-  - {fileID: 1832857463}
-  - {fileID: 698939032}
-  - {fileID: 509832352}
-  - {fileID: 170512208}
-  - {fileID: 747652087}
+  - {fileID: 443417099}
+  - {fileID: 1891817504}
+  - {fileID: 1782513421}
   - {fileID: 970048952}
   - {fileID: 1562434380}
-  - {fileID: 1891817504}
+  - {fileID: 1353673597}
+  - {fileID: 747652087}
+  - {fileID: 1832857463}
   - {fileID: 32325551}
+  - {fileID: 619182570}
+  - {fileID: 698939032}
+  - {fileID: 170512208}
+  - {fileID: 509832352}

@@ -1,18 +1,23 @@
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.Serialization;
 
 public class CatProperties : MonoBehaviour
 {
     public GameObject[] Waypoints;
-    public NavMeshAgent agent;
+    public NavMeshAgent CatAgent;
+    public Vision CatVision;
+    
     public GameObject Player;
+    
     
     public GameObject GetRandomWaypoint()
     {
         return Waypoints[Random.Range(0, Waypoints.Length)];
     }
     
-    [field:SerializeField] public GameObject CurrentWaypoint { get; private set; }
+    
+    public GameObject CurrentWaypoint { get; private set; }
     
     public void SetCurrentWaypoint(GameObject waypoint)
     {

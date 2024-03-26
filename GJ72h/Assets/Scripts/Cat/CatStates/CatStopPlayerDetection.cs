@@ -2,43 +2,35 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerDetection : StateMachineBehaviour
+public class CatStopPlayerDetection : StateMachineBehaviour
 {
     CatProperties catProperties;
-    Transform target;
+    Vision vision;
     
-    public float VisionAngle = 170.0f;
     public override void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         if (catProperties == null)
         {
             catProperties = animator.transform.root.GetComponent<CatProperties>();
         }
-        if (target == null)
+        if (vision == null)
         {
-            target = catProperties.Player.transform;
+            vision = catProperties.CatVision;
         }
         
-        
-        
     }
-    
-    public bool CheckIfTargetIsVisible(Transform transform)
-    {
-        return MyMaths.IsOnVisibleZone(transform.position, target.position, VisionAngle, transform.rotation.eulerAngles.y);
-    }
-    
     public override void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        if (CheckIfTargetIsVisible(animator.transform))
+        if (!vision.CheckIfTargetIsVisible())
         {
-            //TODO : use raycast to check if there is any obstacle between cat and player
-            animator.Play("Chase");
+            animator.Play("Idle");
         }
+        
     }
     
     public override void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         
     }
+    
 }

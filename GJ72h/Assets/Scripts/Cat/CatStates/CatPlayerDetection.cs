@@ -2,14 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CatIdle : StateMachineBehaviour
+public class CatPlayerDetection : StateMachineBehaviour
 {
     CatProperties catProperties;
-    
-    public float maxIdleTime = 5.0f;
-    float cuurentIdleTime = 5.0f;
-    
-    bool idleComplete = false;
+    Vision vision;
     
     public override void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
@@ -17,29 +13,24 @@ public class CatIdle : StateMachineBehaviour
         {
             catProperties = animator.transform.root.GetComponent<CatProperties>();
         }
-        idleComplete = false;
-        cuurentIdleTime = maxIdleTime;
-        
-        catProperties.CatAgent.isStopped = true;
-        
-        Debug.Log("Idling");
+        if (vision == null)
+        {
+            vision = catProperties.CatVision;
+        }
     }
+    
     
     public override void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        cuurentIdleTime -= Time.deltaTime;
-        if (cuurentIdleTime <= 0 && !idleComplete)
+        if (vision.CheckIfTargetIsVisible())
         {
-            catProperties.SetRandomWaypoint();
-            animator.Play("Patrol");
-            idleComplete = true;
+            animator.Play("Chase");
         }
-        
         
     }
     
     public override void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        catProperties.CatAgent.isStopped = false;
+        
     }
 }
