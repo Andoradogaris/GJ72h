@@ -8,6 +8,7 @@ public class PlayerManager : MonoBehaviour
     public int maxSeedCount;
     public Transform trampolineSpawnTransform;
     [SerializeField] private Transform groundChecker;
+    [SerializeField] private Transform headChecker;
     [SerializeField] private float radius;
     [SerializeField] bool isNoisy = false;
     
@@ -34,6 +35,20 @@ public class PlayerManager : MonoBehaviour
     public bool CheckIfIsGrounded()
     {
         Collider[] hitColliders = Physics.OverlapSphere(groundChecker.position, radius);
+
+        foreach (var hitCollider in hitColliders)
+        {
+            if (hitCollider.gameObject.layer == LayerMask.NameToLayer("Ground"))
+            {
+                return true;
+            }
+        }
+        return false;
+    }
+    
+    public bool CheckIfIsHeadHit()
+    {
+        Collider[] hitColliders = Physics.OverlapSphere(headChecker.position, radius);
 
         foreach (var hitCollider in hitColliders)
         {

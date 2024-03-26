@@ -35,7 +35,9 @@ public class WalkState : StateMachineBehaviour
       
         if (animator.transform.root.GetComponent<Rigidbody>().velocity.y < velocityThreshold && !playerManager.CheckIfIsGrounded())
         {
-            animator.Play("JumpExit");
+            // For new jump Test with idle
+            //animator.Play("JumpExit");
+            animator.Play("JumpDropping");
         }
     }
     

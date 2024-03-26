@@ -6,12 +6,17 @@ public class MoveState : StateMachineBehaviour
 {
     ProcessControls processControls;
     [SerializeField] private float speed;
-
+    MoveChecker moveChecker;
+    
     public override void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         if (processControls == null)
         {
             processControls = animator.transform.root.GetComponent<ProcessControls>();
+        }
+        if (moveChecker == null)
+        {
+            moveChecker = animator.transform.root.GetComponent<MoveChecker>();
         }
     }
     
@@ -22,7 +27,9 @@ public class MoveState : StateMachineBehaviour
                 0,
                 processControls.GetVerticalInput() * speed * Time.deltaTime);
 
-        animator.transform.root.Translate(dir);
+        
+        
+        animator.transform.root.Translate(moveChecker.GetMoveDirection(dir));
     }
     
     public override void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)

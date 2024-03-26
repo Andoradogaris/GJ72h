@@ -24,7 +24,7 @@ public class IdleState : StateMachineBehaviour
     {
         if (!playerManager.CheckIfIsGrounded())
         {
-            animator.Play("JumpExit");
+            animator.Play("JumpDropping");
         }
 
         if (processControls.GetHorizontalInput() != 0 || processControls.GetVerticalInput() != 0)
