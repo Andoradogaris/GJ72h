@@ -29,7 +29,7 @@ public class JumpEnterState : StateMachineBehaviour
     {
         if (stateInfo.normalizedTime > 0.99f && !crossFade)
         {
-            animator.CrossFade("JumpIdle", 0.3f);
+            animator.CrossFade("JumpRising", 0.3f);
             crossFade = true;
         }
 

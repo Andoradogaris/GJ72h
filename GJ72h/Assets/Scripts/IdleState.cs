@@ -31,7 +31,7 @@ public class IdleState : StateMachineBehaviour
 
         if ((processControls.GetHorizontalInput() != 0 || processControls.GetVerticalInput() != 0) && !crossFade)
         {
-            animator.CrossFade("Walk", 0.3f);
+            animator.CrossFade("Walk", 0.01f);
             crossFade = true;
         }
 

@@ -15,6 +15,7 @@ public class NewJumpDropping : StateMachineBehaviour
     [SerializeField] bool isGettinUp;
     [SerializeField] bool isFloating;
     [SerializeField] bool isGettinDown;
+    bool crossFade;
 
     private float lastKeyTime;
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
@@ -34,10 +35,11 @@ public class NewJumpDropping : StateMachineBehaviour
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        if (playerManager.CheckIfIsGrounded())
+        if (playerManager.CheckIfIsGrounded() && !crossFade)
         {
             Debug.Log("Dropping Grounded");
-            animator.Play("Idle");
+            animator.CrossFade("Idle", 0.1f);
+            crossFade = true;
             return;
         }
         currentJumpTime += Time.deltaTime;
@@ -57,7 +59,7 @@ public class NewJumpDropping : StateMachineBehaviour
     // OnStateExit is called when a transition ends and the state machine finishes evaluating this state
     override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-
+        crossFade = false;
     }
 
 }

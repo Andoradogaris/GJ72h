@@ -36,7 +36,7 @@ public class HoverState : StateMachineBehaviour
             }
             else
             {
-                animator.CrossFade("JumpIdle", 0.3f);
+                animator.CrossFade("JumpDropping", 0.3f);
                 crossFade = true;
             }
         }

@@ -19,7 +19,7 @@ public class HoverInput : StateMachineBehaviour
         
         if (processControls.GetIsJumpKeyHold() && !crossFade)
         {
-            animator.CrossFade("Hover", 0.5f);
+            animator.CrossFade("Hover", 0.3f);
             crossFade = true;
         }
 
