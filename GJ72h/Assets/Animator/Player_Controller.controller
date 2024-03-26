@@ -14,6 +14,7 @@ AnimatorState:
   m_StateMachineBehaviours:
   - {fileID: -795263586670803818}
   - {fileID: 6649484825904926375}
+  - {fileID: -6023611272898740415}
   m_Position: {x: 50, y: 50, z: 0}
   m_IKOnFeet: 0
   m_WriteDefaultValues: 1
@@ -227,6 +228,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 711e4be9a59ea294799030f2058ac34d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &-6023611272898740415
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9d418f6489c83b4489ec4beb1eb22d65, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 7
 --- !u!114 &-5634513355606483126
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -264,7 +278,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9d418f6489c83b4489ec4beb1eb22d65, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 10
+  speed: 7
 --- !u!114 &-4314827221785666841
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -343,7 +357,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9d418f6489c83b4489ec4beb1eb22d65, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 10
+  speed: 7
 --- !u!1102 &-2291573760190079552
 AnimatorState:
   serializedVersion: 6
@@ -385,7 +399,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9d418f6489c83b4489ec4beb1eb22d65, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 5
+  speed: 7
 --- !u!114 &-2018195821078798729
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -450,7 +464,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9d418f6489c83b4489ec4beb1eb22d65, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 5
+  speed: 7
 --- !u!91 &9100000
 AnimatorController:
   m_ObjectHideFlags: 0
@@ -516,7 +530,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9d418f6489c83b4489ec4beb1eb22d65, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 15
+  speed: 12
 --- !u!114 &713264768810940320
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -554,7 +568,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: febae235e7a3e9640aa80a410e7a1a13, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sensitivity: 1000
+  sensitivity: 800
 --- !u!114 &1521501823159008479
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -727,7 +741,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: febae235e7a3e9640aa80a410e7a1a13, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sensitivity: 1000
+  sensitivity: 500
 --- !u!114 &6649484825904926375
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -917,7 +931,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9d418f6489c83b4489ec4beb1eb22d65, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 10
+  speed: 7
 --- !u!1102 &9129734544668363688
 AnimatorState:
   serializedVersion: 6
