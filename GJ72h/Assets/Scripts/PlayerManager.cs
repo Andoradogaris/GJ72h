@@ -9,6 +9,12 @@ public class PlayerManager : MonoBehaviour
     [SerializeField] private Transform groundChecker;
     [SerializeField] private float radius;
 
+    private void Start()
+    {
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
+    }
+
     public bool CheckIfIsGrounded()
     {
         Collider[] hitColliders = Physics.OverlapSphere(groundChecker.position, radius);

@@ -7,7 +7,6 @@ public class JumpIdleState : StateMachineBehaviour
     public float velocityThreshold = -1.0f;
     public override void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        Debug.Log("JumpIdle");
 
     }
     

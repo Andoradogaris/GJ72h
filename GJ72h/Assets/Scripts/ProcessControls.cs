@@ -60,8 +60,6 @@ public class ProcessControls : MonoBehaviour
     
     UnityEngine.InputSystem.Utilities.ReadOnlyArray<Gamepad> allGamepads;
 
-    public bool isGrounded;
-
     
     private void Update()
     {

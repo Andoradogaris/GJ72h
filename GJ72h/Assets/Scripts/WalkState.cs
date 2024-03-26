@@ -7,7 +7,6 @@ public class WalkState : StateMachineBehaviour
     public float velocityThreshold = -1.0f;
     ProcessControls processControls;
     private PlayerManager playerManager;
-    [SerializeField] private float speed;
 
     public override void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
