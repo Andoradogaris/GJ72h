@@ -36,7 +36,7 @@ public class TrampolineInput : StateMachineBehaviour
             }
             else
             {
-                if (playerManager.seedCount > 0)
+                if (playerManager.actualSeedCount > 0)
                 {
                     animator.Play("DropTrampoline");
                 }

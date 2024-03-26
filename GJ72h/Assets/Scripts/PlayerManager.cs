@@ -4,10 +4,16 @@ using UnityEngine;
 
 public class PlayerManager : MonoBehaviour
 {
-    public int seedCount;
+    public int actualSeedCount;
+    public int maxSeedCount;
     public Transform trampolineSpawnTransform;
     [SerializeField] private Transform groundChecker;
     [SerializeField] private float radius;
+
+    private void Awake()
+    {
+        actualSeedCount = maxSeedCount;
+    }
 
     private void Start()
     {
