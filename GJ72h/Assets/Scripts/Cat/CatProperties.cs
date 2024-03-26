@@ -1,6 +1,8 @@
+using System;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.Serialization;
+using Random = UnityEngine.Random;
 
 public class CatProperties : MonoBehaviour
 {
@@ -9,8 +11,21 @@ public class CatProperties : MonoBehaviour
     public Vision CatVision;
     
     public GameObject Player;
-    
-    
+
+    void Start()
+    {
+        
+        if (Player == null)
+        {
+            Player = GameObject.FindWithTag("Player");
+        }
+        
+        if (CatVision.target == null)
+        {
+            CatVision.target = Player.transform;
+        }
+    }
+
     public GameObject GetRandomWaypoint()
     {
         return Waypoints[Random.Range(0, Waypoints.Length)];

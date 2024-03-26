@@ -7,6 +7,7 @@ public class DropTrampolineState : StateMachineBehaviour
     [SerializeField] private GameObject trampoline;
     private PlayerManager playerManager;
     private UIManager uiManager;
+    bool crossFade;
 
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
@@ -22,7 +23,11 @@ public class DropTrampolineState : StateMachineBehaviour
 
         Transform trampolineSpawn = playerManager.trampolineSpawnTransform;
         Instantiate(trampoline, trampolineSpawn.position, trampolineSpawn.rotation);
-        animator.Play("Idle");
+        if(!crossFade)
+        {
+            animator.CrossFade("Idle", 0.3f);
+            crossFade = true;
+        }
     }
 
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
@@ -34,5 +39,6 @@ public class DropTrampolineState : StateMachineBehaviour
     {
         playerManager.actualSeedCount--;
         uiManager.UpdateUI();
+        crossFade = false;
     }
 }

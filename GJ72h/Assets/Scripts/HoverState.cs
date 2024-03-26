@@ -7,6 +7,7 @@ public class HoverState : StateMachineBehaviour
     ProcessControls processControls;
     Rigidbody rb;
     public float velocityThreshold = -1.0f;
+    bool crossFade;
 
 
     public override void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
@@ -24,17 +25,19 @@ public class HoverState : StateMachineBehaviour
     
     public override void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        if (!processControls.GetIsJumpKeyHold())
+        if (!processControls.GetIsJumpKeyHold() && !crossFade)
         {
             float velocityY = rb.velocity.y;
 
             if (velocityY < velocityThreshold)
             {
-                animator.Play("JumpExit");
+                animator.CrossFade("JumpExit", 0.3f);
+                crossFade = true;
             }
             else
             {
-                animator.Play("JumpIdle");
+                animator.CrossFade("JumpDropping", 0.3f);
+                crossFade = true;
             }
         }
         
@@ -42,6 +45,6 @@ public class HoverState : StateMachineBehaviour
     
     public override void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        
+        crossFade = false;
     }
 }

@@ -7,6 +7,7 @@ public class JumpEnterState : StateMachineBehaviour
     ProcessControls processControls;
     private Rigidbody rb;
     [SerializeField]Vector3 impulseForce;
+    bool crossFade;
 
     public override void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
@@ -26,15 +27,16 @@ public class JumpEnterState : StateMachineBehaviour
     
     public override void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        if (stateInfo.normalizedTime > 0.99f)
+        if (stateInfo.normalizedTime > 0.99f && !crossFade)
         {
-            animator.Play("JumpIdle");
+            animator.CrossFade("JumpRising", 0.3f);
+            crossFade = true;
         }
 
     }
     
     public override void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        
+        crossFade = false;
     }
 }
