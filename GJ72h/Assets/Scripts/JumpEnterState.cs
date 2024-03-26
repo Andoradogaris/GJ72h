@@ -13,7 +13,7 @@ public class JumpEnterState : StateMachineBehaviour
             processControls = animator.transform.root.GetComponentInChildren<ProcessControls>();
         }
         Debug.Log("JumpEnter");
-
+        animator.transform.root.GetComponentInChildren<Rigidbody>().velocity = Vector2.zero;
         animator.transform.root.GetComponentInChildren<Rigidbody>().AddForce(impulseForce + animator.transform.GetComponent<Rigidbody>().velocity, ForceMode.Impulse);
 
     }
