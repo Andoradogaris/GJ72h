@@ -6,6 +6,7 @@ public class IdleState : StateMachineBehaviour
 {
     ProcessControls processControls;
     private PlayerManager playerManager;
+    bool crossFade;
 
     public override void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
@@ -22,19 +23,22 @@ public class IdleState : StateMachineBehaviour
     
     public override void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        if (!playerManager.CheckIfIsGrounded())
+        if (!playerManager.CheckIfIsGrounded() && !crossFade)
         {
-            animator.Play("JumpExit");
+            animator.CrossFade("JumpExit", 0.3f);
+            crossFade = true;
         }
 
-        if (processControls.GetHorizontalInput() != 0 || processControls.GetVerticalInput() != 0)
+        if ((processControls.GetHorizontalInput() != 0 || processControls.GetVerticalInput() != 0) && !crossFade)
         {
-            animator.Play("Walk");
+            animator.CrossFade("Walk", 0.3f);
+            crossFade = true;
         }
 
-        if (processControls.GetIsJumpKeyPressed() && playerManager.CheckIfIsGrounded())
+        if (processControls.GetIsJumpKeyPressed() && playerManager.CheckIfIsGrounded() && !crossFade)
         {
-            animator.Play("JumpEnter");
+            animator.CrossFade("JumpEnter", 0.3f);
+            crossFade = true;
         }
 
 
@@ -42,6 +46,6 @@ public class IdleState : StateMachineBehaviour
     
     public override void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        
+        crossFade = false;
     }
 }

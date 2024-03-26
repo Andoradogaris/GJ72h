@@ -6,6 +6,8 @@ public class JumpExitState : StateMachineBehaviour
 {
     ProcessControls processControls;
     private PlayerManager playerManager;
+    bool crossFade;
+
 
     public override void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
@@ -22,15 +24,16 @@ public class JumpExitState : StateMachineBehaviour
     
     public override void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        if (playerManager.CheckIfIsGrounded())
+        if (playerManager.CheckIfIsGrounded() && !crossFade)
         {
-            animator.Play("Idle");
+            animator.CrossFade("Idle", 0.3f);
+            crossFade = true;
         }
         
     }
     
     public override void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        
+        crossFade = false;
     }
 }

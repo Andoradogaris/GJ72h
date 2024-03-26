@@ -5,6 +5,7 @@ using UnityEngine;
 public class JumpIdleState : StateMachineBehaviour
 {
     public float velocityThreshold = -1.0f;
+    bool crossFade;
     public override void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
 
@@ -14,14 +15,15 @@ public class JumpIdleState : StateMachineBehaviour
     {   
         float velocityY = animator.transform.root.GetComponent<Rigidbody>().velocity.y;
 
-        if (velocityY < velocityThreshold)
+        if (velocityY < velocityThreshold && !crossFade)
         {
-            animator.Play("JumpExit");
+            animator.CrossFade("JumpExit", 0.3f);
+            crossFade = true;
         }
     }
     
     public override void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        
+        crossFade = false;
     }
 }

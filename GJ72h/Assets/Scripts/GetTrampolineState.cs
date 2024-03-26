@@ -6,6 +6,7 @@ public class GetTrampolineState : StateMachineBehaviour
 {
     private PlayerManager playerManager;
     private UIManager uiManager;
+    bool crossFade;
 
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
@@ -21,7 +22,12 @@ public class GetTrampolineState : StateMachineBehaviour
 
         playerManager.actualSeedCount++;
         uiManager.UpdateUI();
-        animator.Play("Idle");
+
+        if(!crossFade)
+        {
+            animator.CrossFade("Idle", 0.3f);
+            crossFade = true;
+        }
     }
 
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
@@ -31,7 +37,7 @@ public class GetTrampolineState : StateMachineBehaviour
 
     override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-
+        crossFade = false;
     }
 
 }
