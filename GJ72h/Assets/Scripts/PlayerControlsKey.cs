@@ -20,10 +20,9 @@ public class PlayerControlsKey : MonoBehaviour
     
     [field: Header("Gamepad Controls")]
     
-    [field: SerializeField] public GamepadControls fistAttackKeyGamepad { get; private set; }  = GamepadControls.buttonWest;
+    [field: SerializeField] public GamepadControls interactKeyGamepad { get; private set; }  = GamepadControls.buttonWest;
     [field: SerializeField] public GamepadControls legAttackKeyGamepad { get; private set; }  = GamepadControls.buttonSouth;
-    [field: SerializeField] public GamepadControls BlockKeyGamepad { get; private set; }  = GamepadControls.buttonEast;
-    [field: SerializeField] public GamepadControls UltimateKeyGamepad { get; private set; }  = GamepadControls.buttonNorth;
+    [field: SerializeField] public GamepadControls TrampolineKeyGamepad { get; private set; }  = GamepadControls.rightTrigger;
     [field: SerializeField] public GamepadControls StartKeyGamepad { get; private set; }  = GamepadControls.startButton;
     
     
@@ -33,26 +32,11 @@ public class PlayerControlsKey : MonoBehaviour
     [field: SerializeField] public KeyCode DownKeyPlayerOne { get; private set; }  = KeyCode.S;
     [field: SerializeField] public KeyCode RightKeyPlayerOne { get; private set; }  = KeyCode.D;
 
-    [field: SerializeField] public KeyCode fistAttackKeyPlayerOne { get; private set; }  = KeyCode.F;
+    [field: SerializeField] public KeyCode interactKeyPlayerOne { get; private set; }  = KeyCode.F;
     [field: SerializeField] public KeyCode jumpKeyPlayerOne { get; private set; }  = KeyCode.Space;
-    [field: SerializeField] public KeyCode BlockKeyPlayerOne { get; private set; }  = KeyCode.V;
-    [field: SerializeField] public KeyCode UltimateKeyPlayerOne { get; private set; }  = KeyCode.B;
+    [field: SerializeField] public KeyCode TrampolineKeyPlayerOne { get; private set; }  = KeyCode.V;
     [field: SerializeField] public KeyCode StartKeyPlayerOne { get; private set; }  = KeyCode.Escape;
-
-
-    [field: Header("Player Two Keys")]
-    [field: SerializeField]
-    public KeyCode UpKeyPlayerTwo { get; private set; } = KeyCode.UpArrow;
-    [field: SerializeField] public KeyCode leftKeyPlayerTwo { get; private set; } = KeyCode.LeftArrow;
-    [field: SerializeField] public KeyCode DownKeyPlayerTwo { get; private set; } = KeyCode.DownArrow;
-    [field: SerializeField] public KeyCode RightKeyPlayerTwo { get; private set; } = KeyCode.RightArrow;
-
-    [field: SerializeField] public KeyCode fistAttackKeyPlayerTwo { get; private set; }  = KeyCode.I;
-    [field: SerializeField] public KeyCode jumpKeyPlayerTwo { get; private set; } = KeyCode.O;
-    [field: SerializeField] public KeyCode BlockKeyPlayerTwo { get; private set; }  = KeyCode.K;
-    [field: SerializeField] public KeyCode UltimateKeyPlayerTwo { get; private set; }  = KeyCode.L;
-    [field: SerializeField] public KeyCode StartKeyPlayerTwo { get; private set; }  = KeyCode.Return;
-
+    
 }
 
 
