@@ -4,14 +4,19 @@ using UnityEngine;
 
 public class HoverInput : StateMachineBehaviour
 {
+    ProcessControls processControls;
     public override void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        
+        if (processControls == null)
+        {
+            processControls = animator.transform.root.GetComponentInChildren<ProcessControls>();
+        }
     }
     
     public override void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        if (Input.GetKey(KeyCode.Space))
+        
+        if (processControls.GetIsJumpKeyHold())
         {
             animator.Play("Hover");
         }
