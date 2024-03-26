@@ -9,7 +9,7 @@ public class EndLevel : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            SceneManager.LoadSceneAsync(0);
+            SceneManager.LoadSceneAsync(2);
         }
     }
 }
