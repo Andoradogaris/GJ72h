@@ -19,13 +19,13 @@ public class CatStopPlayerDetection : StateMachineBehaviour
         }
         
     }
+    
     public override void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         if (!vision.IsTargetDetected())
         {
             animator.Play("Idle");
         }
-        
     }
     
     public override void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)

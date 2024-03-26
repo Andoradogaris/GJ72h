@@ -32,7 +32,7 @@ public class EnemyVisionEditor : Editor
         if (GUILayout.Button("Check if target is visible"))
         {
             ClearLogConsole();
-            vision.TargetIsVisible();
+            vision.GetTargetIsVisible();
         }
     }
 }

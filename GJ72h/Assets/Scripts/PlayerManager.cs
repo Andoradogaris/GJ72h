@@ -9,7 +9,17 @@ public class PlayerManager : MonoBehaviour
     public Transform trampolineSpawnTransform;
     [SerializeField] private Transform groundChecker;
     [SerializeField] private float radius;
-
+    [SerializeField] bool isNoisy = false;
+    
+    public void SetNoisy(bool heard)
+    {
+        isNoisy = heard;
+    }
+    
+    public bool IsNoisy()
+    {
+        return isNoisy;
+    }
     private void Awake()
     {
         actualSeedCount = maxSeedCount;
