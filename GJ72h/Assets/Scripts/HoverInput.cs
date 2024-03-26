@@ -5,6 +5,7 @@ using UnityEngine;
 public class HoverInput : StateMachineBehaviour
 {
     ProcessControls processControls;
+    bool crossFade;
     public override void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         if (processControls == null)
@@ -16,15 +17,16 @@ public class HoverInput : StateMachineBehaviour
     public override void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         
-        if (processControls.GetIsJumpKeyHold())
+        if (processControls.GetIsJumpKeyHold() && !crossFade)
         {
-            animator.Play("Hover");
+            animator.CrossFade("Hover", 0.5f);
+            crossFade = true;
         }
 
     }
     
     public override void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        
+        crossFade = false;
     }
 }
