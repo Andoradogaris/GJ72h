@@ -17,7 +17,7 @@ public class JumpEnterState : StateMachineBehaviour
 
         if (rb == null)
         {
-            rb = animator.transform.GetComponent<Rigidbody>();
+            rb = animator.transform.root.GetComponent<Rigidbody>();
         }
 
         rb.AddForce(impulseForce + rb.velocity, ForceMode.Impulse);
