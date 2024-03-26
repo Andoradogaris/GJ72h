@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -9,16 +10,30 @@ public class Vision : MonoBehaviour
 
     public LayerMask obstacleLayer;
     public VisionChecks visionChecks;
+
+    [SerializeField] bool isTargetVisible;
+    [SerializeField] bool isTargetNoiseDetected;
+    
     
     
     public float maxHearingDistance = 10.0f;
     
     public bool IsTargetDetected()
     {
-        return TargetIsVisible() || IsTargetNoiseDetected();
+        return GetTargetIsVisible() || GetTargetNoiseDetected();
     }
-    
-    public bool TargetIsVisible()
+
+    public bool GetTargetNoiseDetected()
+    {
+        return isTargetNoiseDetected;
+    }
+
+    public bool GetTargetIsVisible()
+    {
+        return isTargetVisible;
+    }
+
+    public void SetTargetIsVisible()
     {
         bool isInVisibleZone = MyMaths.IsOnVisibleZone(transform.position, target.position, VisionAngle, transform.rotation.eulerAngles.y);
         bool obstacleBetween = Physics.Linecast(transform.position, target.position, obstacleLayer);
@@ -27,32 +42,42 @@ public class Vision : MonoBehaviour
         {
             if (isInVisibleZone)
             {
-                return true;
+                isTargetVisible = true;
+                return;
             }
         }
         else if (visionChecks == VisionChecks.ZoneAndObstacle)
         {
             if (isInVisibleZone && !obstacleBetween)
             {
-                return true;
+                isTargetVisible = true;
+                return;
             }
         }
-        return false;
+        isTargetVisible = false;
     }
     
-    public bool IsTargetNoiseDetected()
+    public void SetIsTargetNoiseDetected()
     {
         float distance = Vector3.Distance(transform.position, target.position);
         if (distance <= maxHearingDistance)
         {
-            if (target.TryGetComponent(out PlayerProperties playerProperties))
+            if (target.TryGetComponent(out PlayerManager playerManager))
             {
-                return playerProperties.IsNoisy();
+                isTargetNoiseDetected = playerManager.IsNoisy();
+                return;
             }
         }
-        return false;
+        isTargetNoiseDetected = false;
+        return;
     }
-    
+
+    void Update()
+    {
+        SetTargetIsVisible();
+        SetIsTargetNoiseDetected();
+    }
+
 }
 
 

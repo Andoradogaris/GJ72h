@@ -4,14 +4,14 @@ using UnityEngine;
 
 public class NoisyState : StateMachineBehaviour
 {
-    PlayerProperties playerProperties;
+    PlayerManager playerManager;
     public override void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        if (playerProperties == null)
+        if (playerManager == null)
         {
-            playerProperties = animator.transform.root.GetComponent<PlayerProperties>();
+            playerManager = animator.transform.root.GetComponent<PlayerManager>();
         }
-        playerProperties.SetNoisy(true);
+        playerManager.SetNoisy(true);
     }
     
     public override void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
@@ -21,6 +21,6 @@ public class NoisyState : StateMachineBehaviour
     
     public override void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        playerProperties.SetNoisy(false);
+        playerManager.SetNoisy(false);
     }
 }
