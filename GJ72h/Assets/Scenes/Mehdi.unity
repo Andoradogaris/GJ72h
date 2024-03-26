@@ -169,7 +169,7 @@ GameObject:
   - component: {fileID: 35271330}
   - component: {fileID: 35271329}
   - component: {fileID: 35271328}
-  m_Layer: 6
+  m_Layer: 7
   m_Name: Obstacle (6)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -329,12 +329,11 @@ MonoBehaviour:
   deadZoneOne: 0
   deadZoneTwo: 0
   isRunningKeyPressed: 0
-  isJumpKeyPressed: 0
   isCrouchKeyPressed: 0
   horizontalInput: 0
   verticalInput: 0
   isFistAtkPressed: 0
-  isLegAtkPressed: 0
+  isJumpPressed: 0
   isBlockKeyPressed: 0
   isUltimateKeyPressed: 0
   isStartKeyPressed: 0
@@ -344,6 +343,7 @@ MonoBehaviour:
   currentGamepadId: -99999
   keyboardIndex: 0
   oldGamepadId: 0
+  isGrounded: 0
 --- !u!136 &170512205
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -746,8 +746,9 @@ MonoBehaviour:
   VisionAngle: 160
   obstacleLayer:
     serializedVersion: 2
-    m_Bits: 64
+    m_Bits: 192
   visionChecks: 1
+  maxHearingDistance: 10
 --- !u!114 &509832355
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -805,7 +806,7 @@ GameObject:
   - component: {fileID: 530976283}
   - component: {fileID: 530976282}
   - component: {fileID: 530976281}
-  m_Layer: 6
+  m_Layer: 7
   m_Name: Obstacle (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1032,7 +1033,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 747652087}
-  m_Layer: 6
+  m_Layer: 7
   m_Name: Environnement
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1326,7 +1327,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1182935967}
-  m_Layer: 6
+  m_Layer: 7
   m_Name: Obstacles
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1368,7 +1369,7 @@ GameObject:
   - component: {fileID: 1247770741}
   - component: {fileID: 1247770740}
   - component: {fileID: 1247770739}
-  m_Layer: 6
+  m_Layer: 7
   m_Name: Obstacle (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1506,7 +1507,7 @@ GameObject:
   - component: {fileID: 1291534787}
   - component: {fileID: 1291534786}
   - component: {fileID: 1291534785}
-  m_Layer: 6
+  m_Layer: 7
   m_Name: Obstacle (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1613,7 +1614,7 @@ GameObject:
   - component: {fileID: 1348631628}
   - component: {fileID: 1348631627}
   - component: {fileID: 1348631626}
-  m_Layer: 6
+  m_Layer: 7
   m_Name: Ground
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1751,7 +1752,7 @@ GameObject:
   - component: {fileID: 1490428303}
   - component: {fileID: 1490428302}
   - component: {fileID: 1490428301}
-  m_Layer: 6
+  m_Layer: 7
   m_Name: Obstacle (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1993,7 +1994,7 @@ GameObject:
   - component: {fileID: 1694374127}
   - component: {fileID: 1694374126}
   - component: {fileID: 1694374125}
-  m_Layer: 6
+  m_Layer: 7
   m_Name: Obstacle (5)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2100,7 +2101,7 @@ GameObject:
   - component: {fileID: 1769690644}
   - component: {fileID: 1769690643}
   - component: {fileID: 1769690642}
-  m_Layer: 6
+  m_Layer: 7
   m_Name: Obstacle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2238,7 +2239,7 @@ GameObject:
   - component: {fileID: 1823945586}
   - component: {fileID: 1823945585}
   - component: {fileID: 1823945584}
-  m_Layer: 6
+  m_Layer: 7
   m_Name: Obstacle (7)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2465,7 +2466,7 @@ MonoBehaviour:
   <DownKeyPlayerOne>k__BackingField: 115
   <RightKeyPlayerOne>k__BackingField: 100
   <fistAttackKeyPlayerOne>k__BackingField: 102
-  <legAttackKeyPlayerOne>k__BackingField: 103
+  <jumpKeyPlayerOne>k__BackingField: 32
   <BlockKeyPlayerOne>k__BackingField: 118
   <UltimateKeyPlayerOne>k__BackingField: 98
   <StartKeyPlayerOne>k__BackingField: 32
@@ -2474,7 +2475,7 @@ MonoBehaviour:
   <DownKeyPlayerTwo>k__BackingField: 274
   <RightKeyPlayerTwo>k__BackingField: 275
   <fistAttackKeyPlayerTwo>k__BackingField: 105
-  <legAttackKeyPlayerTwo>k__BackingField: 111
+  <jumpKeyPlayerTwo>k__BackingField: 111
   <BlockKeyPlayerTwo>k__BackingField: 107
   <UltimateKeyPlayerTwo>k__BackingField: 108
   <StartKeyPlayerTwo>k__BackingField: 13
