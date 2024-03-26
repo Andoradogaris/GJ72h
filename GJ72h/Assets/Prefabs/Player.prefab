@@ -68,6 +68,7 @@ Transform:
   - {fileID: 7416491736080719881}
   - {fileID: 1287999749692270636}
   - {fileID: 5190185630064385328}
+  - {fileID: 4000158639367027302}
   m_Father: {fileID: 847502425924530166}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &5773837783279465284
@@ -290,7 +291,6 @@ MonoBehaviour:
   currentGamepadId: -99999
   keyboardIndex: 0
   oldGamepadId: 0
-  isGrounded: 0
 --- !u!114 &4624109852693910287
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -307,6 +307,37 @@ MonoBehaviour:
   trampolineSpawnTransform: {fileID: 1287999749692270636}
   groundChecker: {fileID: 5190185630064385328}
   radius: 0.1
+--- !u!1 &6640898794032469195
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4000158639367027302}
+  m_Layer: 0
+  m_Name: FollowTarget
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4000158639367027302
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6640898794032469195}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.615, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 285841229834460866}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &7754406556824432413
 GameObject:
   m_ObjectHideFlags: 0
@@ -318,6 +349,7 @@ GameObject:
   - component: {fileID: 7416491736080719881}
   - component: {fileID: 1320845472411583141}
   - component: {fileID: 141311668044022889}
+  - component: {fileID: 3617605400314715445}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -333,8 +365,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7754406556824432413}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.23194854, y: -0, z: -0, w: 0.97272813}
-  m_LocalPosition: {x: 0, y: 1.72, z: -2.35}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 1.015, z: -3}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -373,7 +405,7 @@ Camera:
     height: 1
   near clip plane: 0.3
   far clip plane: 1000
-  field of view: 60
+  field of view: 70
   orthographic: 0
   orthographic size: 5
   m_Depth: -1
@@ -399,3 +431,37 @@ AudioListener:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7754406556824432413}
   m_Enabled: 1
+--- !u!114 &3617605400314715445
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7754406556824432413}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 72ece51f2901e7445ab60da3685d6b5f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_ShowDebugText: 0
+  m_ShowCameraFrustum: 1
+  m_IgnoreTimeScale: 0
+  m_WorldUpOverride: {fileID: 0}
+  m_UpdateMethod: 2
+  m_BlendUpdateMethod: 1
+  m_DefaultBlend:
+    m_Style: 1
+    m_Time: 2
+    m_CustomCurve:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+  m_CustomBlends: {fileID: 0}
+  m_CameraCutEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_CameraActivatedEvent:
+    m_PersistentCalls:
+      m_Calls: []
