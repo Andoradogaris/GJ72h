@@ -6,12 +6,18 @@ public class DropTrampolineState : StateMachineBehaviour
 {
     [SerializeField] private GameObject trampoline;
     private PlayerManager playerManager;
+    private UIManager uiManager;
 
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         if(playerManager == null)
         {
             playerManager = animator.transform.root.transform.GetComponent<PlayerManager>();
+        }
+
+        if(uiManager == null)
+        {
+            uiManager = GameObject.FindGameObjectWithTag("UIManager").GetComponent<UIManager>();
         }
 
         Transform trampolineSpawn = playerManager.trampolineSpawnTransform;
@@ -26,6 +32,7 @@ public class DropTrampolineState : StateMachineBehaviour
 
     override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        playerManager.seedCount--;
+        playerManager.actualSeedCount--;
+        uiManager.UpdateUI();
     }
 }

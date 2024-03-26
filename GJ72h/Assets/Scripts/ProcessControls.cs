@@ -147,7 +147,7 @@ public class ProcessControls : MonoBehaviour
         isInteractPressed = Input.GetKeyDown(PlayerControlsKey.Instance.interactKeyPlayerOne);
         isJumpPressed = Input.GetKeyDown(PlayerControlsKey.Instance.jumpKeyPlayerOne);
         isJumpHold = Input.GetKey(PlayerControlsKey.Instance.jumpKeyPlayerOne);
-        isTrampolineKeyPressed = Input.GetKey(PlayerControlsKey.Instance.TrampolineKeyPlayerOne);
+        isTrampolineKeyPressed = Input.GetKeyDown(PlayerControlsKey.Instance.TrampolineKeyPlayerOne);
         isStartKeyPressed = Input.GetKeyDown(PlayerControlsKey.Instance.StartKeyPlayerOne);
         
     }

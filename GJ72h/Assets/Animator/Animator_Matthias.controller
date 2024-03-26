@@ -257,6 +257,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 5
+--- !u!114 &-180356325854707084
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0a33ade4fd4bc42478ccb2b99fe0aa08, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  range: 200
 --- !u!91 &9100000
 AnimatorController:
   m_ObjectHideFlags: 0
@@ -321,7 +334,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   velocityThreshold: -1
-  speed: 5
 --- !u!114 &1928983898809580321
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -347,7 +359,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ae7dd1ec158077242a13c495fe08e774, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  range: 500
 --- !u!1102 &2801321986129776517
 AnimatorState:
   serializedVersion: 6
@@ -361,6 +372,7 @@ AnimatorState:
   m_Transitions: []
   m_StateMachineBehaviours:
   - {fileID: 2664689415923799844}
+  - {fileID: -180356325854707084}
   m_Position: {x: 50, y: 50, z: 0}
   m_IKOnFeet: 0
   m_WriteDefaultValues: 1
@@ -417,6 +429,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 86118b3799298d742b9e76cc39355e3c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &5127027167799147411
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0a33ade4fd4bc42478ccb2b99fe0aa08, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  range: 200
 --- !u!114 &6069355216421789591
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -497,6 +522,7 @@ AnimatorState:
   m_StateMachineBehaviours:
   - {fileID: 1812332079452809042}
   - {fileID: -4806177966640744518}
+  - {fileID: 5127027167799147411}
   m_Position: {x: 50, y: 50, z: 0}
   m_IKOnFeet: 0
   m_WriteDefaultValues: 1
