@@ -8,7 +8,7 @@ public class DetectPlayerOnTrampoline : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            other.GetComponent<Animator>().Play("TrampJump");
+            other.GetComponentInChildren<Animator>().Play("TrampJump");
         }
     }
 }

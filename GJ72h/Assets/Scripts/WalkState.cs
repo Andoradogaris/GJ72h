@@ -33,7 +33,7 @@ public class WalkState : StateMachineBehaviour
             animator.Play("JumpEnter");
         }
       
-        if (animator.gameObject.GetComponent<Rigidbody>().velocity.y < velocityThreshold && !playerManager.CheckIfIsGrounded())
+        if (animator.transform.root.GetComponent<Rigidbody>().velocity.y < velocityThreshold && !playerManager.CheckIfIsGrounded())
         {
             animator.Play("JumpExit");
         }

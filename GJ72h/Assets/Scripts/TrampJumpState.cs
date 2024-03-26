@@ -11,7 +11,7 @@ public class TrampJumpState : StateMachineBehaviour
     {
         if (rb == null)
         {
-            rb = animator.gameObject.GetComponent<Rigidbody>();
+            rb = animator.transform.root.GetComponent<Rigidbody>();
         }
 
         rb.velocity = Vector3.zero;

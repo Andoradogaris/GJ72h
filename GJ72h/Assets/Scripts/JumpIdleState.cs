@@ -12,7 +12,7 @@ public class JumpIdleState : StateMachineBehaviour
     
     public override void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {   
-        float velocityY = animator.gameObject.GetComponent<Rigidbody>().velocity.y;
+        float velocityY = animator.transform.root.GetComponent<Rigidbody>().velocity.y;
 
         if (velocityY < velocityThreshold)
         {
