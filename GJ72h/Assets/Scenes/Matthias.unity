@@ -131,7 +131,7 @@ GameObject:
   - component: {fileID: 194921037}
   - component: {fileID: 194921036}
   - component: {fileID: 194921035}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Plane
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -261,8 +261,8 @@ MonoBehaviour:
   <BlockKeyGamepad>k__BackingField: 1
   <UltimateKeyGamepad>k__BackingField: 3
   <StartKeyGamepad>k__BackingField: 10
-  <UpKeyPlayerOne>k__BackingField: 122
-  <leftKeyPlayerOne>k__BackingField: 113
+  <UpKeyPlayerOne>k__BackingField: 119
+  <leftKeyPlayerOne>k__BackingField: 97
   <DownKeyPlayerOne>k__BackingField: 115
   <RightKeyPlayerOne>k__BackingField: 100
   <fistAttackKeyPlayerOne>k__BackingField: 102
@@ -380,7 +380,7 @@ Transform:
   m_GameObject: {fileID: 1776339190}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.98, y: 4.84, z: -5.75}
+  m_LocalPosition: {x: 2.3, y: 5.37, z: -5.75}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -526,6 +526,10 @@ PrefabInstance:
     - target: {fileID: 847502425924530166, guid: 5b5e57566a3810048bdd2750012a76da, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3874042983140689980, guid: 5b5e57566a3810048bdd2750012a76da, type: 3}
+      propertyPath: m_Mass
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 6349401778806956672, guid: 5b5e57566a3810048bdd2750012a76da, type: 3}
       propertyPath: m_Name
