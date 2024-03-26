@@ -24,6 +24,8 @@ public class TrampolineInput : StateMachineBehaviour
     RaycastHit hit;
     public override void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
+        Debug.DrawRay(animator.rootPosition, animator.transform.root.forward * range, Color.red);
+
         if (processControls.GetIsTrampolineKeyPressed())
         {
             if (Physics.Raycast(animator.rootPosition, animator.transform.root.forward, out hit, range))

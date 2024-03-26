@@ -1,0 +1,58 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &273849733904601535
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8122056448038802852}
+  - component: {fileID: 8352326031777148526}
+  m_Layer: 0
+  m_Name: ControlKeys
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8122056448038802852
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 273849733904601535}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8352326031777148526
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 273849733904601535}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6b373384011548f47a6a3a31bcb8bf02, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  <interactKeyGamepad>k__BackingField: 2
+  <legAttackKeyGamepad>k__BackingField: 0
+  <TrampolineKeyGamepad>k__BackingField: 9
+  <StartKeyGamepad>k__BackingField: 10
+  <UpKeyPlayerOne>k__BackingField: 122
+  <leftKeyPlayerOne>k__BackingField: 113
+  <DownKeyPlayerOne>k__BackingField: 115
+  <RightKeyPlayerOne>k__BackingField: 100
+  <interactKeyPlayerOne>k__BackingField: 102
+  <jumpKeyPlayerOne>k__BackingField: 32
+  <TrampolineKeyPlayerOne>k__BackingField: 118
+  <StartKeyPlayerOne>k__BackingField: 27
