@@ -2,35 +2,25 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CatPlayerDetection : StateMachineBehaviour
+public class NoisyState : StateMachineBehaviour
 {
-    CatProperties catProperties;
-    Vision vision;
-    
+    PlayerProperties playerProperties;
     public override void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        if (catProperties == null)
+        if (playerProperties == null)
         {
-            catProperties = animator.transform.root.GetComponent<CatProperties>();
+            playerProperties = animator.transform.root.GetComponent<PlayerProperties>();
         }
-        if (vision == null)
-        {
-            vision = catProperties.CatVision;
-        }
+        playerProperties.SetNoisy(true);
     }
-    
     
     public override void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        if (vision.IsTargetDetected())
-        {
-            animator.Play("Chase");
-        }
         
     }
     
     public override void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        
+        playerProperties.SetNoisy(false);
     }
 }
