@@ -17,6 +17,7 @@ public class CatPlayerChase : StateMachineBehaviour
         {
             catProperties = animator.transform.root.GetComponent<CatProperties>();
         }
+        catProperties.CatAgent.isStopped = false;
         oldSpeed = catProperties.CatAgent.speed;
         catProperties.CatAgent.speed = chaseSpeed;
         
@@ -41,6 +42,7 @@ public class CatPlayerChase : StateMachineBehaviour
     
     public override void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
+        catProperties.CatAgent.isStopped = true;
         catProperties.CatAgent.speed = oldSpeed;
     }
 }

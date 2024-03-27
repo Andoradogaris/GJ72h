@@ -9,6 +9,9 @@ public class TrampolineInput : StateMachineBehaviour
     private Transform trampoline;
     [SerializeField] private float range = 200;
 
+    public float playerHeight = 2f;
+    public float playerWidth = 0.5f;
+    
     public override void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         if (processControls == null)
@@ -27,28 +30,28 @@ public class TrampolineInput : StateMachineBehaviour
         }
     }
 
-    RaycastHit hit;
+    bool foundTrampoline = false;
     public override void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        Debug.DrawRay(animator.rootPosition, animator.transform.root.forward * range, Color.red);
+
+        Collider[] col = Physics.OverlapBox(playerManager.trampolineSpawnTransform.position, trampoline.lossyScale / 2);
+        foundTrampoline = false;
         if (processControls.GetIsTrampolineKeyPressed())
         {
-            
-            if (Physics.Raycast(animator.rootPosition, animator.transform.root.forward, out hit, range))
+            foreach (Collider colTouch in col)
             {
-                Debug.Log("Toucher le raycast" + hit.transform.name);
-                if (hit.transform.CompareTag("Trampoline"))
+                if (colTouch.transform.CompareTag("Trampoline"))
                 {
                     Debug.Log("Toucher le trampoline");
                     animator.Play("GetTrampoline");
-                    Destroy(hit.transform.gameObject);
+                    Destroy(colTouch.gameObject);
+                    foundTrampoline = true;
                 }
             }
-            else
+            
+            if (!foundTrampoline)
             {
-                Collider[] col = Physics.OverlapBox(playerManager.trampolineSpawnTransform.position, trampoline.lossyScale / 2);
-                Collider[] groundCol = Physics.OverlapBox(playerManager.trampolineSpawnTransform.position, trampoline.lossyScale / 2);
-
+                //Collider[] groundCol = Physics.OverlapBox(playerManager.trampolineSpawnTransform.position, trampoline.lossyScale / 2);
 
                 if (playerManager.actualSeedCount > 0 && col.Length <= 0)
                 {

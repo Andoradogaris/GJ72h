@@ -5,21 +5,15 @@ using UnityEngine;
 public class TrampJumpState : StateMachineBehaviour
 {
     [SerializeField] private Vector3 impulseForce;
-    private Rigidbody rb;
     bool crossFade;
 
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        if (rb == null)
-        {
-            rb = animator.transform.root.GetComponent<Rigidbody>();
-        }
+        crossFade = false;
 
-        rb.velocity = Vector3.zero;
-        rb.AddForce(impulseForce, ForceMode.Impulse);
         if (!crossFade)
         {
-            animator.CrossFade("JumpExit", 0.3f);
+            animator.CrossFade("TrampJumpRising", 0.3f);
             crossFade = true;
         }
         

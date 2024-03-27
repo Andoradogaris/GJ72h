@@ -27,7 +27,7 @@ public class HoverState : StateMachineBehaviour
     {
         if (!processControls.GetIsJumpKeyHold() && !crossFade)
         {
-            float velocityY = rb.velocity.y;
+            /*float velocityY = rb.velocity.y;
 
             if (velocityY < velocityThreshold)
             {
@@ -38,7 +38,10 @@ public class HoverState : StateMachineBehaviour
             {
                 animator.CrossFade("JumpDropping", 0.3f);
                 crossFade = true;
-            }
+            }*/
+            
+            animator.CrossFade("JumpDropping", 0.3f);
+            crossFade = true;
         }
         
     }

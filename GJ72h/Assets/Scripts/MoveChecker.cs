@@ -14,32 +14,77 @@ public class MoveChecker : MonoBehaviour
     public bool CanMoveRight;
 
     public float distance = 1.0f;
+
+    private Rigidbody rb;
+
+    private void Start()
+    {
+        rb = GetComponent<Rigidbody>();
+    }
+    bool CheckIfGameObjectHasLayer(GameObject obj, LayerMask layerMask)
+    {
+        // Vérifie si au moins un des calques spécifiés dans le masque de calques est présent dans le GameObject
+        return (layerMask & (1 << obj.layer)) != 0;
+    }
+    RaycastHit[] allHits;
+
     void Update()
     {
         bool obstacleTop, obstacleMiddle, obstacleBottom;
         
-        obstacleTop = Physics.Raycast(TopPoint.position, transform.forward, distance, cannotMoveLayer);
+        /*obstacleTop = Physics.Raycast(TopPoint.position, transform.forward, distance, cannotMoveLayer);
         obstacleMiddle = Physics.Raycast(MiddlePoint.position, transform.forward, distance, cannotMoveLayer);
         obstacleBottom = Physics.Raycast(BottomPoint.position, transform.forward, distance, cannotMoveLayer);
         CanMoveForward = !obstacleTop && !obstacleMiddle && !obstacleBottom;
+        */
+        // test sweepall test
+        allHits = rb.SweepTestAll(transform.forward, distance);
+        CanMoveForward = true;
+        foreach (var hit in allHits)
+        {
+            if (CheckIfGameObjectHasLayer(hit.collider.gameObject, cannotMoveLayer))
+            {
+                CanMoveForward = false;
+                break;
+            }
+        }
         
-        obstacleTop = Physics.Raycast(TopPoint.position, -transform.forward, distance, cannotMoveLayer);
-        obstacleMiddle = Physics.Raycast(MiddlePoint.position, -transform.forward, distance, cannotMoveLayer);
-        obstacleBottom = Physics.Raycast(BottomPoint.position, -transform.forward, distance, cannotMoveLayer);
-        CanMoveBackward = !obstacleTop && !obstacleMiddle && !obstacleBottom;
+        allHits = rb.SweepTestAll(-transform.forward, distance);
+        CanMoveBackward = true;
+        foreach (var hit in allHits)
+        {
+            if (CheckIfGameObjectHasLayer(hit.collider.gameObject, cannotMoveLayer))
+            {
+                CanMoveBackward = false;
+                break;
+            }
+        }
         
-        obstacleTop = Physics.Raycast(TopPoint.position, -transform.right, distance, cannotMoveLayer);
-        obstacleMiddle = Physics.Raycast(MiddlePoint.position, -transform.right, distance, cannotMoveLayer);
-        obstacleBottom = Physics.Raycast(BottomPoint.position, -transform.right, distance, cannotMoveLayer);
-        CanMoveLeft = !obstacleTop && !obstacleMiddle && !obstacleBottom;
+        allHits = rb.SweepTestAll(-transform.right, distance);
+        CanMoveLeft = true;
+        foreach (var hit in allHits)
+        {
+            if (CheckIfGameObjectHasLayer(hit.collider.gameObject, cannotMoveLayer))
+            {
+                CanMoveLeft = false;
+                break;
+            }
+        }
         
-        obstacleTop = Physics.Raycast(TopPoint.position, transform.right, distance, cannotMoveLayer);
-        obstacleMiddle = Physics.Raycast(MiddlePoint.position, transform.right, distance, cannotMoveLayer);
-        obstacleBottom = Physics.Raycast(BottomPoint.position, transform.right, distance, cannotMoveLayer);
-        CanMoveRight = !obstacleTop && !obstacleMiddle && !obstacleBottom;
+
+        allHits = rb.SweepTestAll(transform.right, distance);
+        CanMoveRight = true;
+        foreach (var hit in allHits)
+        {
+            if (CheckIfGameObjectHasLayer(hit.collider.gameObject, cannotMoveLayer))
+            {
+                CanMoveRight = false;
+                break;
+            }
+        }
         
         
-        Debug.DrawRay(TopPoint.position, transform.forward * distance, Color.red);
+        /*Debug.DrawRay(TopPoint.position, transform.forward * distance, Color.red);
         Debug.DrawRay(MiddlePoint.position, transform.forward * distance, Color.red);
         Debug.DrawRay(BottomPoint.position, transform.forward * distance, Color.red);
         
@@ -53,7 +98,7 @@ public class MoveChecker : MonoBehaviour
         
         Debug.DrawRay(TopPoint.position, transform.right * distance, Color.red);
         Debug.DrawRay(MiddlePoint.position, transform.right * distance, Color.red);
-        Debug.DrawRay(BottomPoint.position, transform.right * distance, Color.red);
+        Debug.DrawRay(BottomPoint.position, transform.right * distance, Color.red);*/
     }
 
     public Vector3 GetMoveDirection(Vector3 baseDirection)

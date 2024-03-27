@@ -4,22 +4,41 @@ using UnityEngine;
 
 public class CatAttack : StateMachineBehaviour
 {
-    
-    public float tempTimer = 2.0f;
-    
+    public CatProperties catProperties;
+    public float attackRange;
+    public bool playerHit = false;
+    public bool animEnd = false;
     public override void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        tempTimer = 2.0f;
-        
+        playerHit = false;
+        animEnd = false;
+        if (catProperties == null)
+        {
+            catProperties = animator.transform.root.GetComponent<CatProperties>();
+        }
+        animator.transform.root.LookAt(catProperties.Player.transform);
+        animator.transform.root.transform.rotation = Quaternion.Euler(0, animator.transform.root.transform.rotation.eulerAngles.y, 0);
         Debug.Log("Attacking");
     }
     
     public override void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        tempTimer -= Time.deltaTime;
-        if (tempTimer <= 0)
+        if (stateInfo.normalizedTime >= 0.5f && !playerHit)
+        {
+            Collider[] hitColliders = Physics.OverlapSphere(catProperties.PlayerDetectionPoint.position, attackRange);
+            foreach (var hitCollider in hitColliders)
+            {
+                if (hitCollider.CompareTag("Player"))
+                {
+                    Debug.Log("Player Hit");
+                    playerHit = true;
+                }
+            }
+        }
+        if (stateInfo.normalizedTime >= 0.99f && !animEnd)
         {
             animator.Play("Idle");
+            animEnd = true;
         }
     }
     

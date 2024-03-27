@@ -4,31 +4,72 @@ using UnityEngine;
 
 public class RotateCamera : StateMachineBehaviour
 {
-    [SerializeField] private float sensitivity;
      private GameObject followTarget;
-
-    // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
+    
+     ProcessControls processControls;
+     
+     public float verticalLimitMin = 80;
+     public float verticalLimitMax = 300;
+     
+     
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
+        if (processControls == null)
+        {
+            processControls = animator.transform.root.GetComponent<ProcessControls>();
+        }
         if(followTarget == null)
         {
             followTarget = GameObject.FindWithTag("FollowTarget");
         }
     }
-
-    // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        float mouseX = Input.GetAxisRaw("Mouse X") * sensitivity * Time.deltaTime;
-        float mouseY = Input.GetAxisRaw("Mouse Y") * sensitivity * Time.deltaTime;
+        //animator.transform.root.Rotate(Vector3.up * processControls.GetCameraHorizontalInput());
+        //followTarget.transform.Rotate(Vector3.left * processControls.GetCameraVerticalInput());
+        
+        float verticalInput = processControls.GetCameraVerticalInput();
+        float horizontalInput = processControls.GetCameraHorizontalInput();
+        animator.transform.root.Rotate(Vector3.up * horizontalInput);
 
-        animator.transform.root.Rotate(Vector3.up * mouseX);
-        followTarget.transform.Rotate(Vector3.left * mouseY);
+        
+        Debug.Log("Euler x : "+followTarget.transform.eulerAngles.x);
+        if (verticalInput < 0)
+        {
+            Debug.Log("verticalInput < 0");
+        }
+        else if (verticalInput > 0)
+        {
+            Debug.Log("verticalInput > 0");
+        }
+        else
+        {
+            Debug.Log("verticalInput == 0");
+        }
+        
+        
+        followTarget.transform.Rotate(Vector3.left * verticalInput);
+
+        if (followTarget.transform.eulerAngles.x > verticalLimitMin &&
+            followTarget.transform.eulerAngles.x < verticalLimitMax)
+        {
+            /*if (followTarget.transform.eulerAngles.x > verticalLimitMin)
+            {
+                followTarget.transform.eulerAngles = new Vector3(
+                    verticalLimitMin,
+                    followTarget.transform.eulerAngles.y,
+                    0);
+            }
+            else if (followTarget.transform.eulerAngles.x < verticalLimitMax)
+            {
+                followTarget.transform.eulerAngles = new Vector3(
+                    verticalLimitMax,
+                    followTarget.transform.eulerAngles.y,
+                    0);
+            
+            }*/
+        }
+
+        
     }
-
-    // OnStateExit is called when a transition ends and the state machine finishes evaluating this state
-    //override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
-    //{
-    //    
-    //}
 }

@@ -50,8 +50,8 @@ public class NewJumpDropping : StateMachineBehaviour
                 currentJumpTime = lastKeyTime;
 
             }
-            Debug.Log("JumpForce: " + jumpForce);
             jumpForce = jumpForceCurve.Evaluate(currentJumpTime);
+            
             animator.transform.root.Translate(0, jumpForce * jumpMultiplier * Time.deltaTime, 0);
         }
     }

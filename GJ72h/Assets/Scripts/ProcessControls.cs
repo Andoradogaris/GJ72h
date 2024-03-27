@@ -11,8 +11,12 @@ public class ProcessControls : MonoBehaviour
     public float deadZoneOne;
 
     [SerializeField] float horizontalInput;
-
     [SerializeField] float verticalInput;
+
+    [SerializeField] float cameraHorizontalInput;
+    [SerializeField] float cameraVerticalInput;
+    [SerializeField] float mouseSensitivity = 800f;
+    [SerializeField] float gamepadSensitivity = 300f;
 
     [SerializeField] bool isInteractPressed;
 
@@ -75,17 +79,36 @@ public class ProcessControls : MonoBehaviour
         }
     }
     
+    float oldRightStickX = -9999;
+    float oldRightStickY = -9999;
     private void ProcessGamepadInput(Gamepad gamepad)
     {
+        if (oldRightStickX == -9999)
+        {
+            oldRightStickX = gamepad.rightStick.x.ReadValue();
+            oldRightStickY = gamepad.rightStick.y.ReadValue();
+        }
         horizontalInput = gamepad.leftStick.x.ReadValue();
         verticalInput = gamepad.leftStick.y.ReadValue();
 
+        float rightStickX = gamepad.rightStick.x.ReadValue();
+        float rightStickY = gamepad.rightStick.y.ReadValue();
+        
+        float xDiff = rightStickX - oldRightStickX;
+        float yDiff = rightStickY - oldRightStickY;
+        
+        cameraHorizontalInput = rightStickX * gamepadSensitivity * Time.deltaTime;
+        cameraVerticalInput = rightStickY * gamepadSensitivity * Time.deltaTime;
+        
         isInteractPressed = WasButtonPressedThisFrame(PlayerControlsKey.Instance.interactKeyGamepad, gamepad);
         isJumpPressed = WasButtonPressedThisFrame(PlayerControlsKey.Instance.legAttackKeyGamepad, gamepad);
         isJumpHold = IsButtonPressed(PlayerControlsKey.Instance.legAttackKeyGamepad, gamepad);
         
         isTrampolineKeyPressed = WasButtonPressedThisFrame(PlayerControlsKey.Instance.TrampolineKeyGamepad, gamepad);
         isStartKeyPressed = WasButtonPressedThisFrame(PlayerControlsKey.Instance.StartKeyGamepad, gamepad);
+
+        oldRightStickX = rightStickX;
+        oldRightStickY = rightStickY;
     }
     
     bool WasButtonPressedThisFrame(GamepadControls buttonToCheck, Gamepad gamepad)
@@ -143,6 +166,9 @@ public class ProcessControls : MonoBehaviour
             tempInput -= 1;
         }
         horizontalInput = tempInput;
+        
+        cameraHorizontalInput = Input.GetAxisRaw("Mouse X") * mouseSensitivity * Time.deltaTime;
+        cameraVerticalInput = Input.GetAxisRaw("Mouse Y") * mouseSensitivity * Time.deltaTime;
         
         isInteractPressed = Input.GetKeyDown(PlayerControlsKey.Instance.interactKeyPlayerOne);
         isJumpPressed = Input.GetKeyDown(PlayerControlsKey.Instance.jumpKeyPlayerOne);
@@ -249,7 +275,17 @@ public class ProcessControls : MonoBehaviour
     {
         return verticalInput;
     }
-
+    
+    public float GetCameraHorizontalInput()
+    {
+        return cameraHorizontalInput;
+    }
+    
+    public float GetCameraVerticalInput()
+    {
+        return cameraVerticalInput;
+    }
+    
     public bool GetIsTrampolineKeyPressed()
     {
         return isTrampolineKeyPressed;

@@ -11,7 +11,7 @@ public class CatProperties : MonoBehaviour
     public Vision CatVision;
     
     public GameObject Player;
-
+    public Transform PlayerDetectionPoint;
     void Start()
     {
         
@@ -32,7 +32,7 @@ public class CatProperties : MonoBehaviour
     }
     
     
-    public GameObject CurrentWaypoint { get; private set; }
+    [field:SerializeField] public GameObject CurrentWaypoint { get; private set; }
     
     public void SetCurrentWaypoint(GameObject waypoint)
     {

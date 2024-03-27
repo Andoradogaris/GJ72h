@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -11,6 +12,14 @@ public class PlayerManager : MonoBehaviour
     [SerializeField] private Transform headChecker;
     [SerializeField] private float radius;
     [SerializeField] bool isNoisy = false;
+    [SerializeField] bool debugGrounded = false;
+    
+    [SerializeField] private Transform trampolineChecker;
+
+    public Transform GetTrampolineChecker()
+    {
+        return trampolineChecker;
+    }
     
     public void SetNoisy(bool heard)
     {
@@ -58,5 +67,10 @@ public class PlayerManager : MonoBehaviour
             }
         }
         return false;
+    }
+
+    private void Update()
+    {
+        debugGrounded = CheckIfIsGrounded();
     }
 }

@@ -115,7 +115,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: e764932e57f56144499a4defa60fe6c0, type: 2}
+  m_Motion: {fileID: 7400000, guid: 1038c73325ed2b74faecac4523a38958, type: 2}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
@@ -145,7 +145,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5cbc30fe1cf9954399a317c1213a836, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tempTimer: 2
+  catProperties: {fileID: 0}
+  attackRange: 1
+  playerHit: 0
+  animEnd: 0
 --- !u!114 &4955322686236368192
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -183,9 +186,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3f39bb54836b938429993e805b9f4ab1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  chaseSpeed: 5
+  chaseSpeed: 8
   stopChaseDistance: 100
-  attackDistance: 1
+  attackDistance: 3
 --- !u!114 &7740615263614979981
 MonoBehaviour:
   m_ObjectHideFlags: 1

@@ -40,6 +40,6 @@ public class CatIdle : StateMachineBehaviour
     
     public override void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        catProperties.CatAgent.isStopped = false;
+        //catProperties.CatAgent.isStopped = false;
     }
 }

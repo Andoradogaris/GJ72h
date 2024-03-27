@@ -41,9 +41,8 @@ public class IdleState : StateMachineBehaviour
             crossFade = true;
         }
 
-
     }
-    
+
     public override void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         crossFade = false;

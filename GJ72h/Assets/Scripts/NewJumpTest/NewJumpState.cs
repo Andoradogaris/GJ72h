@@ -74,6 +74,7 @@ public class NewJumpState : StateMachineBehaviour
                 timeToUse = lastKeyTime;
             }
             jumpForce = jumpForceCurve.Evaluate(timeToUse);
+            
             animator.transform.root.Translate(0, jumpForce * jumpMultiplier * Time.deltaTime, 0);
         }
 

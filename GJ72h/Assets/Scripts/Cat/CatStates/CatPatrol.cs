@@ -32,6 +32,10 @@ public class CatPatrol : StateMachineBehaviour
     
     public override void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
+        if (catProperties.CatAgent.pathPending)
+        {
+            return;
+        }
         if (catProperties.CatAgent.remainingDistance <= 0.1f)
         {
             animator.Play("Idle");
