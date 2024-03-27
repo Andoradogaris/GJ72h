@@ -19,20 +19,21 @@ public class GetTrampolineState : StateMachineBehaviour
         {
             uiManager = GameObject.FindGameObjectWithTag("UIManager").GetComponent<UIManager>();
         }
+        crossFade = false;
 
-        playerManager.actualSeedCount++;
-        uiManager.UpdateUI();
-
-        if(!crossFade)
-        {
-            animator.CrossFade("Idle", 0.3f);
-            crossFade = true;
-        }
     }
 
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-
+        if (stateInfo.normalizedTime >= 0.99f && !crossFade)
+        {
+            playerManager.actualSeedCount++;
+            uiManager.UpdateUI();
+            Destroy(playerManager.selectedTrampoline);
+            animator.CrossFade("Idle", 0.3f);
+            crossFade = true;
+            Debug.Log("Get Trampoline Success !!");
+        }
     }
 
     override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)

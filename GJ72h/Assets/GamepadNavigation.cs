@@ -6,6 +6,8 @@ public class GamepadNavigation : MonoBehaviour
 {
     public MenuGamepad menuGamepad;
     public ProcessControls menuProcessControls;
+    public GameObject pauseMenu;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -15,6 +17,10 @@ public class GamepadNavigation : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (!pauseMenu.activeSelf)
+        {
+            return;
+        }
         if (menuProcessControls.GetVerticalInput() > 0)
         {
             menuGamepad.SelectionButton(0);

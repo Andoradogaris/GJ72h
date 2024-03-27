@@ -20,18 +20,17 @@ public class DropTrampolineState : StateMachineBehaviour
         {
             uiManager = GameObject.FindGameObjectWithTag("UIManager").GetComponent<UIManager>();
         }
-
-        Transform trampolineSpawn = playerManager.trampolineSpawnTransform;
-        Instantiate(trampoline, trampolineSpawn.position, trampolineSpawn.rotation);
-        if(!crossFade)
-        {
-            animator.CrossFade("Idle", 0.3f);
-            crossFade = true;
-        }
     }
 
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
+        if (stateInfo.normalizedTime >= 0.99f && !crossFade)
+        {
+            Transform trampolineSpawn = playerManager.trampolineSpawnTransform;
+            Instantiate(trampoline, trampolineSpawn.position, trampolineSpawn.rotation);
+            animator.CrossFade("Idle", 0.3f);
+            crossFade = true;
+        }
 
     }
 

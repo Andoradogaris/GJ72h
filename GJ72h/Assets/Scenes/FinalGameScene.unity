@@ -10469,6 +10469,7 @@ MonoBehaviour:
   buttons:
   - {fileID: 959783294}
   - {fileID: 1753450626}
+  pauseMenu: {fileID: 244912515}
 --- !u!114 &1504327429
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10498,6 +10499,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   menuGamepad: {fileID: 1504327428}
   menuProcessControls: {fileID: 1504327431}
+  pauseMenu: {fileID: 244912515}
 --- !u!114 &1504327431
 MonoBehaviour:
   m_ObjectHideFlags: 0

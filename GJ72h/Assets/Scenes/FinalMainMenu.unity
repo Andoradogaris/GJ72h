@@ -414,6 +414,7 @@ MonoBehaviour:
   buttons:
   - {fileID: 1007459137}
   - {fileID: 1281764468}
+  pauseMenu: {fileID: 1149952765}
 --- !u!64 &161529465
 MeshCollider:
   m_ObjectHideFlags: 0

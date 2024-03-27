@@ -11,6 +11,8 @@ public class MenuGamepad : MonoBehaviour
     
     public Button[] buttons;
     
+    public GameObject pauseMenu;
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -20,6 +22,10 @@ public class MenuGamepad : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (!pauseMenu.activeSelf)
+        {
+            return;
+        }
         if (menuProcessControls.GetIsJumpKeyPressed())
         {
             clickButton();

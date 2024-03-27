@@ -11,7 +11,7 @@ public class TrampolineInput : StateMachineBehaviour
 
     public float playerHeight = 2f;
     public float playerWidth = 0.5f;
-    
+        
     public override void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         if (processControls == null)
@@ -44,7 +44,7 @@ public class TrampolineInput : StateMachineBehaviour
                 {
                     Debug.Log("Toucher le trampoline");
                     animator.Play("GetTrampoline");
-                    Destroy(colTouch.gameObject);
+                    playerManager.selectedTrampoline = colTouch.gameObject;
                     foundTrampoline = true;
                 }
             }

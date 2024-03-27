@@ -15,6 +15,7 @@ public class PlayerManager : MonoBehaviour
     [SerializeField] bool debugGrounded = false;
     
     [SerializeField] private Transform trampolineChecker;
+    public GameObject selectedTrampoline;
 
     public Transform GetTrampolineChecker()
     {
