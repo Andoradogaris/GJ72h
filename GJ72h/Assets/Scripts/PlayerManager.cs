@@ -11,7 +11,16 @@ public class PlayerManager : MonoBehaviour
     [SerializeField] private Transform headChecker;
     [SerializeField] private float radius;
     [SerializeField] bool isNoisy = false;
-    
+
+    private void Update()
+    {
+        if(actualSeedCount > maxSeedCount)
+        {
+            maxSeedCount = actualSeedCount;
+            GameObject.FindGameObjectWithTag("UIManager").GetComponent<UIManager>().UpdateUI();
+        }
+    }
+
     public void SetNoisy(bool heard)
     {
         isNoisy = heard;
