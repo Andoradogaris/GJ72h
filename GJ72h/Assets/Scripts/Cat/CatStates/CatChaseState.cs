@@ -2,43 +2,37 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CatPlayerChase : StateMachineBehaviour
+public class CatChaseState : StateMachineBehaviour
 {
     CatProperties catProperties;
-    
-    public float chaseSpeed = 5.0f;
-    public float stopChaseDistance = 100.0f;
     public float attackDistance = 1.0f;
-    
-    private float oldSpeed;
+    public float stopChaseDistance = 100.0f;
+
     public override void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         if (catProperties == null)
         {
             catProperties = animator.transform.root.GetComponent<CatProperties>();
         }
-        catProperties.CatAgent.isStopped = false;
-        oldSpeed = catProperties.CatAgent.speed;
-        catProperties.CatAgent.speed = chaseSpeed;
-        
-        Debug.Log("Chasing");
     }
     
     public override void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         if (Vector3.Distance(catProperties.Player.transform.position, catProperties.transform.position) <= attackDistance)
         {
-            catProperties.CatAgent.SetDestination(catProperties.CatAgent.transform.position);
-
+            animator.Play("Attack");
             return;
         }
-        catProperties.CatAgent.SetDestination(catProperties.Player.transform.position);
-        // if distance <= attack dont move
+        if (Vector3.Distance(catProperties.Player.transform.position, catProperties.transform.position) >= stopChaseDistance)
+        {
+            animator.Play("Idle");
+            return;
+        }
+
     }
     
     public override void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        catProperties.CatAgent.isStopped = true;
-        catProperties.CatAgent.speed = oldSpeed;
+        
     }
 }

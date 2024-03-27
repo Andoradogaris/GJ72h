@@ -21,6 +21,7 @@ public class winCondition : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Player"))
         {
+            Debug.Log("Win !!");
             UnityEngine.SceneManagement.SceneManager.LoadScene(2);
         }
     }

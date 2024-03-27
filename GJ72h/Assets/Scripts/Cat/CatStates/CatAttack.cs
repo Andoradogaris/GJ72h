@@ -31,6 +31,7 @@ public class CatAttack : StateMachineBehaviour
                 if (hitCollider.CompareTag("Player"))
                 {
                     playerHit = true;
+                    Debug.Log("Lose !!");
                     UnityEngine.SceneManagement.SceneManager.LoadScene(3);
                 }
             }
