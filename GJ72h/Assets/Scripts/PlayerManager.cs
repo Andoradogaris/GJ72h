@@ -72,5 +72,10 @@ public class PlayerManager : MonoBehaviour
     private void Update()
     {
         debugGrounded = CheckIfIsGrounded();
+        if(actualSeedCount > maxSeedCount)
+        {
+            maxSeedCount = actualSeedCount;
+            GameObject.FindGameObjectWithTag("UIManager").GetComponent<UIManager>().UpdateUI();
+        }
     }
 }
