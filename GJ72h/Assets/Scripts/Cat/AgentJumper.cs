@@ -6,7 +6,7 @@ using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.Events;
 
-public class AgentMover : MonoBehaviour
+public class AgentJumper : MonoBehaviour
 {
     [SerializeField]
     private NavMeshAgent _Agent;
@@ -20,8 +20,11 @@ public class AgentMover : MonoBehaviour
 
     public UnityEvent OnLand, OnStartJump;
 
+    Animator animator;
+    
     private void Start()
     {
+        animator = GetComponentInChildren<Animator>();
         _Agent.autoTraverseOffMeshLink = false;
     }
     
@@ -51,6 +54,8 @@ public class AgentMover : MonoBehaviour
         bool reverseDirection = CheckIfJumpingFromEndToStart(link);
         StartCoroutine(MoveOnOffMeshLink(spline, reverseDirection));
         // TODO : change animation
+        Debug.Log("Cat Jumping");
+        animator.Play("JumpStart");
         OnStartJump?.Invoke();
     }
 
@@ -93,6 +98,8 @@ public class AgentMover : MonoBehaviour
         _Agent.CompleteOffMeshLink();
 
         OnLand?.Invoke();
+        animator.Play("JumpEnd");
+
         yield return new WaitForSeconds(0.1f);
         _onNavMeshLink = false;
 

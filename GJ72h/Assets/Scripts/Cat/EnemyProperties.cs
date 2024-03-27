@@ -5,7 +5,7 @@ namespace DefaultNamespace
     public class EnemyProperties : MonoBehaviour
     {
         [SerializeField]
-        private AgentMover _movement;
+        private AgentJumper _movement;
         [SerializeField]
         private AgentAnimation _agentAnimation;
 

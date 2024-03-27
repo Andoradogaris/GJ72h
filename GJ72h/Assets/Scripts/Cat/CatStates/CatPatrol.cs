@@ -16,6 +16,7 @@ public class CatPatrol : StateMachineBehaviour
         {
             catProperties = animator.transform.root.GetComponent<CatProperties>();
         }
+        catProperties.CatAgent.isStopped = false;
         currentWaypoint = catProperties.CurrentWaypoint;
         if (currentWaypoint == null)
         {
@@ -38,6 +39,8 @@ public class CatPatrol : StateMachineBehaviour
         }
         if (catProperties.CatAgent.remainingDistance <= 0.1f)
         {
+            catProperties.CatAgent.speed = oldSpeed;
+            catProperties.CatAgent.isStopped = true;
             animator.Play("Idle");
         }
         catProperties.CatAgent.SetDestination(currentWaypoint.transform.position);
@@ -45,6 +48,5 @@ public class CatPatrol : StateMachineBehaviour
     
     public override void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        catProperties.CatAgent.speed = oldSpeed;
     }
 }

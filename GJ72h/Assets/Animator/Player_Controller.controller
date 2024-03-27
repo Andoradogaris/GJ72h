@@ -520,8 +520,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: febae235e7a3e9640aa80a410e7a1a13, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  verticalLimitMin: 80
-  verticalLimitMax: 300
+  verticalLimitMin: 70
+  verticalLimitMax: 310
 --- !u!114 &-1816714963978549185
 MonoBehaviour:
   m_ObjectHideFlags: 1

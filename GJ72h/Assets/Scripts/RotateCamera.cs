@@ -10,7 +10,7 @@ public class RotateCamera : StateMachineBehaviour
      
      public float verticalLimitMin = 80;
      public float verticalLimitMax = 300;
-     
+     float verticalmiddle;
      
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
@@ -22,6 +22,8 @@ public class RotateCamera : StateMachineBehaviour
         {
             followTarget = GameObject.FindWithTag("FollowTarget");
         }
+        
+        verticalmiddle = (verticalLimitMax + verticalLimitMin) / 2;
     }
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
@@ -32,42 +34,26 @@ public class RotateCamera : StateMachineBehaviour
         float horizontalInput = processControls.GetCameraHorizontalInput();
         animator.transform.root.Rotate(Vector3.up * horizontalInput);
 
-        
-        Debug.Log("Euler x : "+followTarget.transform.eulerAngles.x);
-        if (verticalInput < 0)
-        {
-            Debug.Log("verticalInput < 0");
-        }
-        else if (verticalInput > 0)
-        {
-            Debug.Log("verticalInput > 0");
-        }
-        else
-        {
-            Debug.Log("verticalInput == 0");
-        }
-        
-        
         followTarget.transform.Rotate(Vector3.left * verticalInput);
 
         if (followTarget.transform.eulerAngles.x > verticalLimitMin &&
             followTarget.transform.eulerAngles.x < verticalLimitMax)
         {
-            /*if (followTarget.transform.eulerAngles.x > verticalLimitMin)
+            if (followTarget.transform.eulerAngles.x > verticalLimitMin && followTarget.transform.eulerAngles.x < verticalmiddle)
             {
                 followTarget.transform.eulerAngles = new Vector3(
                     verticalLimitMin,
                     followTarget.transform.eulerAngles.y,
                     0);
             }
-            else if (followTarget.transform.eulerAngles.x < verticalLimitMax)
+            else if (followTarget.transform.eulerAngles.x < verticalLimitMax && followTarget.transform.eulerAngles.x > verticalmiddle)
             {
                 followTarget.transform.eulerAngles = new Vector3(
                     verticalLimitMax,
                     followTarget.transform.eulerAngles.y,
                     0);
             
-            }*/
+            }
         }
 
         

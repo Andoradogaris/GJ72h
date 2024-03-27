@@ -30,8 +30,8 @@ public class CatAttack : StateMachineBehaviour
             {
                 if (hitCollider.CompareTag("Player"))
                 {
-                    Debug.Log("Player Hit");
                     playerHit = true;
+                    UnityEngine.SceneManagement.SceneManager.LoadScene(3);
                 }
             }
         }
