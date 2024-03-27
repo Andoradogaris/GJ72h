@@ -56,6 +56,12 @@ public class TrampolineInput : StateMachineBehaviour
                 if (playerManager.actualSeedCount > 0 && col.Length <= 0)
                 {
                     animator.Play("DropTrampoline");
+                } else if (playerManager.actualSeedCount <= 0)
+                {
+                    MessageManager.instance.ShowMessage("I don't have any more.");
+                } else if (col.Length > 0)
+                {
+                    MessageManager.instance.ShowMessage("I can't put a trampoline here.");
                 }
             }
         }

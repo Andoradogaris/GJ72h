@@ -23,9 +23,15 @@ public class MessageManager : MonoBehaviour
     public TMP_Text messageText;
     public float displayDuration = 3f; 
 
+    Coroutine displayMessageCoroutine;
+    
     public void ShowMessage(string message)
     {
-        StartCoroutine(DisplayMessage(message));
+        if (displayMessageCoroutine != null)
+        {
+            StopCoroutine(displayMessageCoroutine);
+        }
+        displayMessageCoroutine = StartCoroutine(DisplayMessage(message));
     }
 
     IEnumerator DisplayMessage(string message)

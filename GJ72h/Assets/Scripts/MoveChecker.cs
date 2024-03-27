@@ -44,6 +44,7 @@ public class MoveChecker : MonoBehaviour
         {
             if (CheckIfGameObjectHasLayer(hit.collider.gameObject, cannotMoveLayer))
             {
+                Debug.Log("forward : " + hit.collider.gameObject.name);
                 CanMoveForward = false;
                 break;
             }
